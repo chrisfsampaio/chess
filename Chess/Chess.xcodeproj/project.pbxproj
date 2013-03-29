@@ -252,6 +252,7 @@
 				AACD76A117012BDC0083C4AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

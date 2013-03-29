@@ -10,22 +10,26 @@
 #define Chess_Jogo_h
 
 #include "Tabuleiro.h"
+#include "Peca.h"
+
+#define kComprimentoNome 25
 
 struct _jogo
 {
-    char titulo[50];
-    //Pointer to the board
-    //pieces array
+    char jogador1[kComprimentoNome];
+    char jogador2[kComprimentoNome];
+    char titulo[(kComprimentoNome * 2) + 3];
+    Tabuleiro *tabuleiro;
+    Peca *pecas;
+    char turno;
     //move in progress
-    //Turn (black or white)
 };
 
 typedef struct _jogo Jogo;
 
-//Jogo criaJogo();
-//void display(Jogo *jogo);
+Jogo *criaJogo();
+void display(Jogo *jogo);
 void executaJogada();
-
 
 
 #endif

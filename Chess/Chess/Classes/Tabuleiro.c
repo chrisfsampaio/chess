@@ -24,6 +24,27 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
         Peca peca = pecas[i];
         tabuleiro.pecas[peca.coluna][peca.linha] = peca;
     }
+    
+    
+//    for (int i = 0; i < 8; i++)
+//    {
+//        printf("|");
+//        for (int j = 0; j < 8; j++)
+//        {
+//            Peca peca = tabuleiro.pecas[i][j];
+//            if (peca.simbolo == 'x')
+//            {
+//                printf("  |");
+//            }
+//            else
+//            {
+//                char simbolo = peca.simbolo;
+//                printf(" %c |",simbolo);
+//            }
+//        }
+//        printf("\n------------------------\n");
+//    }
+    
     Tabuleiro *pointer = &tabuleiro;
     return pointer;
 }
