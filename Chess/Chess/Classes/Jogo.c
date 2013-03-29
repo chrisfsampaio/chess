@@ -136,6 +136,9 @@ void executaJogada(Jogo *jogo)
     int linhaDestino = ((int)jogada[3] - '0') - 1;
     int colunaDestino = letraParaNumero(jogada[4]);
     
+    
+#warning Christian: implement the rules to move a piece
+    
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
     jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem] = *pecaNula();
     jogo->tabuleiro->pecas[linhaDestino][colunaDestino] = peca;
