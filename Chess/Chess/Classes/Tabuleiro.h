@@ -20,6 +20,6 @@ typedef struct _tabuleiro Tabuleiro;
 
 Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas);
 Peca getCasa(Tabuleiro *tabuleiro, int linha, int coluna);
-Peca setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca peca);
+int setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca);
 
 #endif

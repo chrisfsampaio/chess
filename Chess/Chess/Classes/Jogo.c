@@ -32,8 +32,41 @@ Jogo *criaJogo()
     strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
     strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
     
-    Peca pecas[0];
-    Tabuleiro *tabuleiro = criaTabuleiro(pecas, 0);
+    Peca pecas[32];
+    pecas[0] = *criaPeca(0, 0, 'T');
+    pecas[1] = *criaPeca(0, 1, 'H');
+    pecas[2] = *criaPeca(0, 2, 'B');
+    pecas[3] = *criaPeca(0, 3, 'Q');
+    pecas[4] = *criaPeca(0, 4, 'K');
+    pecas[5] = *criaPeca(0, 5, 'B');
+    pecas[6] = *criaPeca(0, 6, 'H');
+    pecas[7] = *criaPeca(0, 7, 'T');
+    pecas[8] = *criaPeca(1, 0, 'P');
+    pecas[9] = *criaPeca(1, 1, 'P');
+    pecas[10] = *criaPeca(1, 2, 'P');
+    pecas[11] = *criaPeca(1, 3, 'P');
+    pecas[12] = *criaPeca(1, 4, 'P');
+    pecas[13] = *criaPeca(1, 5, 'P');
+    pecas[14] = *criaPeca(1, 6, 'P');
+    pecas[15] = *criaPeca(1, 7, 'P');
+    pecas[16] = *criaPeca(6, 0, 'p');
+    pecas[17] = *criaPeca(6, 1, 'p');
+    pecas[18] = *criaPeca(6, 2, 'p');
+    pecas[19] = *criaPeca(6, 3, 'p');
+    pecas[20] = *criaPeca(6, 4, 'p');
+    pecas[21] = *criaPeca(6, 5, 'p');
+    pecas[22] = *criaPeca(6, 6, 'p');
+    pecas[23] = *criaPeca(6, 7, 'p');
+    pecas[24] = *criaPeca(7, 0, 't');
+    pecas[25] = *criaPeca(7, 1, 'h');
+    pecas[26] = *criaPeca(7, 2, 'b');
+    pecas[27] = *criaPeca(7, 3, 'q');
+    pecas[28] = *criaPeca(7, 4, 'k');
+    pecas[29] = *criaPeca(7, 5, 'b');
+    pecas[30] = *criaPeca(7, 6, 'h');
+    pecas[31] = *criaPeca(7, 7, 't');
+    
+    Tabuleiro *tabuleiro = criaTabuleiro(pecas, 32);
     jogo->tabuleiro = tabuleiro;
     jogo->turno = 'B';
     
@@ -43,22 +76,46 @@ Jogo *criaJogo()
 void display(Jogo *jogo)
 {
     printf("\n\n\n\n");
+    printf("\n-----------------------------------------------------------------\n");
     for (int i = 0; i < 8; i++)
     {
+        printf("|");
+        for (int j = 0; j < 8; j++)
+        {
+            printf("\t\t|");
+        }
+        printf("\n");
+        
         printf("|");
         for (int j = 0; j < 8; j++)
         {
             Peca peca = jogo->tabuleiro->pecas[i][j];
             if (peca.simbolo == 'x')
             {
-                printf("  |");
+                printf("\t\t|");
             }
             else
             {
                 char simbolo = peca.simbolo;
-                printf(" %c |",simbolo);
+                printf("\t%c\t|",simbolo);
             }
         }
-        printf("\n------------------------\n");
+        
+        printf("\n|");
+        for (int j = 0; j < 8; j++)
+        {
+            printf("\t\t|");
+        }        
+        printf("\n-----------------------------------------------------------------\n");
     }
 }
+
+void executaJogada(Jogo *jogo, Peca *peca, int linha, int coluna)
+{
+//    if (setCasa(jogo->tabuleiro, linha, coluna, peca) == 1)
+//    {
+//        
+//    }
+}
+
+

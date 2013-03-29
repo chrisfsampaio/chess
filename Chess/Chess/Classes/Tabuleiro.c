@@ -23,7 +23,7 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
     for (int i = 0; i < numeroDePecas; i++)
     {
         Peca peca = pecas[i];
-        tabuleiro->pecas[peca.coluna][peca.linha] = peca;
+        tabuleiro->pecas[peca.linha][peca.coluna] = peca;
     }
     
     return tabuleiro;
@@ -36,7 +36,7 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
 //
 //}
 
-//Peca setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca peca);
+//int setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca peca);
 //{
 //
 //}
