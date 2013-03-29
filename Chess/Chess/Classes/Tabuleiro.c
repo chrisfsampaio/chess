@@ -27,3 +27,16 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
     Tabuleiro *pointer = &tabuleiro;
     return pointer;
 }
+
+
+#warning Mike: Implementar get e set casa
+//Peca getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
+//{
+//
+//}
+
+//Peca setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca peca);
+//{
+//
+//}
+
