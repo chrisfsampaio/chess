@@ -12,6 +12,13 @@
 #include "Jogo.h"
 
 
+///Christian TODO: clear screen whether on Windos or POSIX
+//#ifdef _WIN32
+//#define CLEAR() system("cls");
+//#else
+//#define CLEAR() system("clear");
+//#endif
+
 Jogo *criaJogo()
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
@@ -31,4 +38,27 @@ Jogo *criaJogo()
     jogo->turno = 'B';
     
     return jogo;
+}
+
+void display(Jogo *jogo)
+{
+    printf("\n\n\n\n");
+    for (int i = 0; i < 8; i++)
+    {
+        printf("|");
+        for (int j = 0; j < 8; j++)
+        {
+            Peca peca = jogo->tabuleiro->pecas[i][j];
+            if (peca.simbolo == 'x')
+            {
+                printf("  |");
+            }
+            else
+            {
+                char simbolo = peca.simbolo;
+                printf(" %c |",simbolo);
+            }
+        }
+        printf("\n------------------------\n");
+    }
 }

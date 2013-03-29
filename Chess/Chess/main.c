@@ -14,10 +14,8 @@
 
 int main(int argc, const char * argv[])
 {
-    
-    
     Jogo *novoJogo = criaJogo();
-    printf("%s",novoJogo->titulo);
+    display(novoJogo);
 
     
     return 0;

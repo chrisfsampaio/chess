@@ -1,14 +1,15 @@
 //
-//  Peca.c
+//  Peca->c
 //  Chess
 //
-//  Created by Christian on 3/25/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
+//  Created by Christian on 3/25/13->
+//  Copyright (c) 2013 Leonardo Henrique Tsuda-> All rights reserved->
 //
 
 #include <stdio.h>
-#include "Peca.h"
 #include <string.h>
+#include <stdlib.h>
+#include "Peca.h"
 
 //o Torre:'t'
 //o Cavalo:'h'
@@ -20,33 +21,33 @@
 
 Peca *criaPeca(int linha, int coluna, char simbolo)
 {
-    Peca peca;
-    peca.linha = linha;
-    peca.coluna = coluna;
-    peca.simbolo = simbolo;
-    if (peca.simbolo == 't' || peca.simbolo == 'T')
+    Peca *peca = (Peca *)malloc(sizeof(Peca));
+    peca->linha = linha;
+    peca->coluna = coluna;
+    peca->simbolo = simbolo;
+    if (peca->simbolo == 't' || peca->simbolo == 'T')
     {
-        strcpy(peca.nome, "Torre");
+        strcpy(peca->nome, "Torre");
     }
-    else if (peca.simbolo == 'h' || peca.simbolo == 'H')
+    else if (peca->simbolo == 'h' || peca->simbolo == 'H')
     {
-        strcpy(peca.nome, "Cavalo");
+        strcpy(peca->nome, "Cavalo");
     }
-    else if (peca.simbolo == 'b' || peca.simbolo == 'B')
+    else if (peca->simbolo == 'b' || peca->simbolo == 'B')
     {
-        strcpy(peca.nome, "Bispo");
+        strcpy(peca->nome, "Bispo");
     }
-    else if (peca.simbolo == 'q' || peca.simbolo == 'Q')
+    else if (peca->simbolo == 'q' || peca->simbolo == 'Q')
     {
-        strcpy(peca.nome, "Rainha");
+        strcpy(peca->nome, "Rainha");
     }
-    else if (peca.simbolo == 'k' || peca.simbolo == 'K')
+    else if (peca->simbolo == 'k' || peca->simbolo == 'K')
     {
-        strcpy(peca.nome, "Rei");
+        strcpy(peca->nome, "Rei");
     }
-    else if (peca.simbolo == 'p' || peca.simbolo == 'P')
+    else if (peca->simbolo == 'p' || peca->simbolo == 'P')
     {
-        strcpy(peca.nome, "Peao");
+        strcpy(peca->nome, "Peao");
     }
     else
     {
@@ -56,16 +57,14 @@ Peca *criaPeca(int linha, int coluna, char simbolo)
     
 #warning Mike: Validar numero maximo da linha e coluna seguindo o exemplo de como foi feita a validacao de simbolo
     
-    Peca *pointer = &peca;
-    return pointer;
+    return peca;
 }
 
 Peca *pecaNula()
 {
-    Peca peca;
-    peca.simbolo = 'x';
-    Peca *pointer = &peca;
-    return pointer;
+    Peca *peca = (Peca *)malloc(sizeof(Peca));
+    peca->simbolo = 'x';
+    return peca;
 }
 
 char lado(Peca *peca)
