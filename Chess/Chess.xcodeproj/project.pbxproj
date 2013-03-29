@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA344EA117063C0D00814047 /* Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AA344EA017063C0D00814047 /* Utilities.c */; };
 		AACD769A17012BDC0083C4AF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AACD769917012BDC0083C4AF /* main.c */; };
 		AACD769C17012BDC0083C4AF /* Chess.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = AACD769B17012BDC0083C4AF /* Chess.1 */; };
 		AACD76AC17012DC00083C4AF /* Jogo.c in Sources */ = {isa = PBXBuildFile; fileRef = AACD76AB17012DC00083C4AF /* Jogo.c */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA344E9F17063C0100814047 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
+		AA344EA017063C0D00814047 /* Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Utilities.c; path = Classes/Utilities.c; sourceTree = "<group>"; };
 		AACD769517012BDC0083C4AF /* Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACD769917012BDC0083C4AF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		AACD769B17012BDC0083C4AF /* Chess.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Chess.1; sourceTree = "<group>"; };
@@ -50,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA344E9E17063BE500814047 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA344E9F17063C0100814047 /* Utilities.h */,
+				AA344EA017063C0D00814047 /* Utilities.c */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		AACD768A17012BDC0083C4AF = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +81,7 @@
 		AACD769817012BDC0083C4AF /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				AA344E9E17063BE500814047 /* Utilities */,
 				AACD76A217012CE90083C4AF /* Jogo */,
 				AACD76A817012D5B0083C4AF /* Tabuleiro */,
 				AACD76A917012D730083C4AF /* Peca */,
@@ -160,6 +173,7 @@
 				AACD76AC17012DC00083C4AF /* Jogo.c in Sources */,
 				AACD76AE17012DCB0083C4AF /* Tabuleiro.c in Sources */,
 				AACD76B017012DD80083C4AF /* Peca.c in Sources */,
+				AA344EA117063C0D00814047 /* Utilities.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

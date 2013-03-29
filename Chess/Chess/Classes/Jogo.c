@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "Jogo.h"
+#include "Utilities.h"
 
 
 ///Christian TODO: clear screen whether on Windos or POSIX
@@ -26,6 +27,7 @@ Jogo *criaJogo()
     printf("Digite o nome do Jogador 1\n");
     fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
     
+#warning Mike: Certificar de que os nomes nao sejam iguais ( dica: use while (= );
     printf("\nDigite o nome do Jogador 2\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
     
@@ -75,18 +77,21 @@ Jogo *criaJogo()
 
 void display(Jogo *jogo)
 {
-    printf("\n\n\n\n");
-    printf("\n-----------------------------------------------------------------\n");
+    printf("\n\n\n\n\t");
     for (int i = 0; i < 8; i++)
     {
-        printf("|");
+        char letra = numeroParaLetra(i);
+        printf("\t%c\t", letra);
+    }
+    printf("\n\t-----------------------------------------------------------------\n");
+    for (int i = 0; i < 8; i++)
+    {
+        printf("\t|");
         for (int j = 0; j < 8; j++)
         {
             printf("\t\t|");
         }
-        printf("\n");
-        
-        printf("|");
+        printf("\n%d\t|",i + 1);
         for (int j = 0; j < 8; j++)
         {
             Peca peca = jogo->tabuleiro->pecas[i][j];
@@ -100,22 +105,42 @@ void display(Jogo *jogo)
                 printf("\t%c\t|",simbolo);
             }
         }
-        
-        printf("\n|");
+        printf("\t%d\n\t|",i + 1);
         for (int j = 0; j < 8; j++)
         {
             printf("\t\t|");
         }        
-        printf("\n-----------------------------------------------------------------\n");
+        printf("\n\t-----------------------------------------------------------------\n");
     }
+    printf("\t");
+    for (int i = 0; i < 8; i++)
+    {
+        char letra = numeroParaLetra(i);
+        printf("\t%c\t", letra);
+    }
+    printf("\n\n");
+
+    executaJogada(jogo);
 }
 
-void executaJogada(Jogo *jogo, Peca *peca, int linha, int coluna)
+void executaJogada(Jogo *jogo)
 {
-//    if (setCasa(jogo->tabuleiro, linha, coluna, peca) == 1)
-//    {
-//        
-//    }
+    fflush(stdin);
+    char jogada[6];
+    printf("Digite a jogada\n");
+    fgets(jogada, sizeof(jogada), stdin);
+    
+    int linhaOrigem = ((int)jogada[0] - '0') - 1;
+    int colunaOrigem = letraParaNumero(jogada[1]);
+    
+    int linhaDestino = ((int)jogada[3] - '0') - 1;
+    int colunaDestino = letraParaNumero(jogada[4]);
+    
+    Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
+    jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem] = *pecaNula();
+    jogo->tabuleiro->pecas[linhaDestino][colunaDestino] = peca;
+    display(jogo);
 }
+
 
 

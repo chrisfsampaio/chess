@@ -29,7 +29,7 @@ typedef struct _jogo Jogo;
 
 Jogo *criaJogo();
 void display(Jogo *jogo);
-void executaJogada(Jogo *jogo, Peca *peca, int coluna, int linha);
+void executaJogada(Jogo *jogo);
 
 
 #endif

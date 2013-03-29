@@ -51,7 +51,7 @@ Peca *criaPeca(int linha, int coluna, char simbolo)
     }
     else
     {
-        printf("Simbolo invalido!\nInicie a peca com um dos simbolos:\nt, T, h, H, b, B, q, Q, k, K, p, P");
+        printf("Simbolo invalido!\nInicie a peca com um dos simbolos:\n t, T, h, H, b, B, q, Q, k, K, p, P\n");
         return NULL;
     }
     
