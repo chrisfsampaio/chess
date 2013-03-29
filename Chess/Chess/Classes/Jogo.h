@@ -9,17 +9,23 @@
 #ifndef Chess_Jogo_h
 #define Chess_Jogo_h
 
-struct GameState
+#include "Tabuleiro.h"
+
+struct _jogo
 {
-    char[50] gameTitle
+    char titulo[50];
     //Pointer to the board
     //pieces array
     //move in progress
     //Turn (black or white)
 };
 
-void criaJogo();
-void display();
+typedef struct _jogo Jogo;
+
+//Jogo criaJogo();
+//void display(Jogo *jogo);
 void executaJogada();
+
+
 
 #endif
