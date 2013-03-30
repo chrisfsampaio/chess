@@ -15,16 +15,17 @@ struct _peca
     char simbolo;
     int linha;
     int coluna;
-    
 };
 
 typedef struct _peca Peca;
 
 Peca *criaPeca(int linha, int coluna, char simbolo);
 Peca *pecaNula();
+int movePeca(Peca *peca, int linha, int coluna);
 
 //retorna um char que indica o lado da peca
 //'P' para pretas, e 'B' para brancas
 char lado(Peca *peca);
+
 
 #endif

@@ -1,9 +1,9 @@
 //
-//  Peca->c
+//  Peca.c
 //  Chess
 //
-//  Created by Christian on 3/25/13->
-//  Copyright (c) 2013 Leonardo Henrique Tsuda-> All rights reserved->
+//  Created by Christian on 3/25/13.
+//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
 //
 
 #include <stdio.h>
@@ -80,3 +80,70 @@ char lado(Peca *peca)
     }
     return 'P';
 }
+
+int movePeca(Peca *peca, int linha, int coluna)
+{
+    if (linha > 7 || coluna > 7)
+    {
+        return -1;
+    }
+    switch (peca->simbolo)
+    {
+        case 't':
+        case 'T':
+            if (abs(peca->coluna - coluna) == 0 || abs(peca->linha - linha == 0))
+            {
+                peca->coluna = coluna;
+                peca->linha = linha;
+                return 0;
+            }            
+            break;
+            
+        case 'b':
+        case 'B':
+            if (abs(peca->coluna - coluna) == abs(peca->linha - linha))
+            {
+                peca->coluna = coluna;
+                peca->linha = linha;
+                return 0;
+            }
+            break;
+        
+        case 'h':
+        case 'H':
+            if ((abs(peca->linha - linha) == 2 && abs(peca->coluna - coluna) == 1) ||
+                (abs(peca->linha - linha) == 1 && abs(peca->coluna - coluna) == 2))
+            {
+                peca->coluna = coluna;
+                peca->linha = linha;
+                return 0;
+            }
+            break;
+            
+        case 'q':
+        case 'Q':
+            if ((abs(peca->coluna - coluna) == 0 || abs(peca->linha - linha == 0)) ||
+                (abs(peca->coluna - coluna) == abs(peca->linha - linha)))
+            {
+                peca->coluna = coluna;
+                peca->linha = linha;
+                return 0;
+            }
+            break;
+        
+        case 'k':
+        case 'K':
+            if (abs(peca->linha - linha) <= 1 && abs(peca->coluna - coluna) <= 1)
+            {
+                peca->coluna = coluna;
+                peca->linha = linha;
+                return 0;
+            }
+            break;
+            
+        default:
+            break;
+    }
+    return -1;
+}
+

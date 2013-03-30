@@ -140,8 +140,11 @@ void executaJogada(Jogo *jogo)
 #warning Christian: implement the rules to move a piece
     
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
-    jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem] = *pecaNula();
-    jogo->tabuleiro->pecas[linhaDestino][colunaDestino] = peca;
+    if (movePeca(&peca, linhaDestino, colunaDestino) == 0)
+    {
+        jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem] = *pecaNula();
+        jogo->tabuleiro->pecas[linhaDestino][colunaDestino] = peca;
+    }
     display(jogo);
 }
 
