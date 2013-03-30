@@ -144,8 +144,9 @@ void executaJogada(Jogo *jogo)
 //#warning Christian: implement the rules to move a piece
     
     int jogadaOk = 0;
+    int fimDeJogo = 0;
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
-    char msg[50];
+    char msg[200];
     strcpy(msg, "");
     if (peca.simbolo != 'x' && lado(&peca) == jogo->turno)
     {
@@ -167,7 +168,16 @@ void executaJogada(Jogo *jogo)
                     {
                         strcat(msg, "A peca -");
                         strcat(msg, pecaCapturada.nome);
+                        strcat(msg, "- de -");
+                        strcat(msg, jogo->turno == 'B' ? jogo->jogador2 : jogo->jogador1);
                         strcat(msg, "- foi capturada!");
+                        if (pecaCapturada.simbolo == 'k' || pecaCapturada.simbolo == 'K')
+                        {
+                            strcat(msg, "\nO jogador -");
+                            strcat(msg, jogo->turno == 'B' ? jogo->jogador1 : jogo->jogador2);
+                            strcat(msg, "- venceu!!");
+                            fimDeJogo = 1;
+                        }
                     }
                 }
             }
@@ -191,6 +201,11 @@ void executaJogada(Jogo *jogo)
     if (jogadaOk)
     {
         inverterTurno(jogo);
+    }
+    if (fimDeJogo)
+    {
+        printf("%s", msg);
+        exit(0);
     }
     display(jogo, msg);
 }

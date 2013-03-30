@@ -151,6 +151,16 @@ int movePeca(Peca *peca, int linha, int coluna)
             }
             break;
             
+        case 'p':
+            if (peca->linha == 6 &&
+                (peca->linha - linha == 1 ||
+                 peca->linha - linha == 2) &&
+                coluna == peca->coluna)
+            {
+                return 0;
+            }
+            break;
+            
         default:
             break;
     }
