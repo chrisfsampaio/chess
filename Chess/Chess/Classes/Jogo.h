@@ -28,7 +28,7 @@ struct _jogo
 typedef struct _jogo Jogo;
 
 Jogo *criaJogo();
-void display(Jogo *jogo);
+void display(Jogo *jogo, char *msg);
 void executaJogada(Jogo *jogo);
 
 

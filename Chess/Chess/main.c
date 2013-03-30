@@ -15,7 +15,7 @@
 int main(int argc, const char * argv[])
 {
     Jogo *novoJogo = criaJogo();
-    display(novoJogo);
+    display(novoJogo, "");
 
     
     return 0;

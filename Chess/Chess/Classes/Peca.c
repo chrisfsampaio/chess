@@ -64,6 +64,7 @@ Peca *pecaNula()
 {
     Peca *peca = (Peca *)malloc(sizeof(Peca));
     peca->simbolo = 'x';
+    strcpy(peca->nome, "x");
     return peca;
 }
 
@@ -77,6 +78,10 @@ char lado(Peca *peca)
         peca->simbolo == 'p')
     {
         return 'B';
+    }
+    else if (peca->simbolo == 'x')
+    {
+        return 'X';
     }
     return 'P';
 }
@@ -93,8 +98,7 @@ int movePeca(Peca *peca, int linha, int coluna)
         case 'T':
             if (abs(peca->coluna - coluna) == 0 || abs(peca->linha - linha == 0))
             {
-                peca->coluna = coluna;
-                peca->linha = linha;
+
                 return 0;
             }            
             break;
@@ -103,8 +107,7 @@ int movePeca(Peca *peca, int linha, int coluna)
         case 'B':
             if (abs(peca->coluna - coluna) == abs(peca->linha - linha))
             {
-                peca->coluna = coluna;
-                peca->linha = linha;
+
                 return 0;
             }
             break;
@@ -114,8 +117,7 @@ int movePeca(Peca *peca, int linha, int coluna)
             if ((abs(peca->linha - linha) == 2 && abs(peca->coluna - coluna) == 1) ||
                 (abs(peca->linha - linha) == 1 && abs(peca->coluna - coluna) == 2))
             {
-                peca->coluna = coluna;
-                peca->linha = linha;
+
                 return 0;
             }
             break;
@@ -125,8 +127,7 @@ int movePeca(Peca *peca, int linha, int coluna)
             if ((abs(peca->coluna - coluna) == 0 || abs(peca->linha - linha == 0)) ||
                 (abs(peca->coluna - coluna) == abs(peca->linha - linha)))
             {
-                peca->coluna = coluna;
-                peca->linha = linha;
+
                 return 0;
             }
             break;
@@ -135,8 +136,7 @@ int movePeca(Peca *peca, int linha, int coluna)
         case 'K':
             if (abs(peca->linha - linha) <= 1 && abs(peca->coluna - coluna) <= 1)
             {
-                peca->coluna = coluna;
-                peca->linha = linha;
+
                 return 0;
             }
             break;

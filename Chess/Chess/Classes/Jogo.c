@@ -75,7 +75,7 @@ Jogo *criaJogo()
     return jogo;
 }
 
-void display(Jogo *jogo)
+void display(Jogo *jogo, char *msg)
 {
     printf("\n\n\n\n\t");
     for (int i = 0; i < 8; i++)
@@ -118,17 +118,18 @@ void display(Jogo *jogo)
         char letra = numeroParaLetra(i);
         printf("\t%c\t", letra);
     }
-    printf("\n\n");
+    printf("\n\n%s\n",msg);
 
     executaJogada(jogo);
 }
 
 void executaJogada(Jogo *jogo)
 {
-    fflush(stdin);
     char jogada[6];
     printf("Digite a jogada\n");
     fgets(jogada, sizeof(jogada), stdin);
+    flush_in();
+    fflush(stdin);
     
     int linhaOrigem = ((int)jogada[0] - '0') - 1;
     int colunaOrigem = letraParaNumero(jogada[1]);
@@ -140,12 +141,33 @@ void executaJogada(Jogo *jogo)
 #warning Christian: implement the rules to move a piece
     
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
+    char msg[100];
+    strcpy(msg, "");
     if (movePeca(&peca, linhaDestino, colunaDestino) == 0)
     {
-        jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem] = *pecaNula();
-        jogo->tabuleiro->pecas[linhaDestino][colunaDestino] = peca;
+        Peca *pecaRetorno = setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, &peca);
+        if (pecaRetorno == 0)
+        {
+            strcat(msg, "Jogada Invalida, existe uma peca sua no destino");
+        }
+        else
+        {
+            Peca pecaCapturada = *pecaRetorno;
+            if (pecaCapturada.simbolo != 'x')
+            {
+                strcat(msg, "A peca -");
+                strcat(msg, pecaCapturada.nome);
+                strcat(msg, "- foi capturada!");
+            }
+        }
     }
-    display(jogo);
+    else
+    {
+        strcat(msg, "A peca -");
+        strcat(msg, peca.nome);
+        strcat(msg, "- nao consegue fazer o movimento solicitado");
+    }
+    display(jogo, msg);
 }
 
 

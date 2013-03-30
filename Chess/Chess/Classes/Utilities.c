@@ -113,3 +113,15 @@ char numeroParaLetra(int numero)
     
     return 'X';
 }
+
+void flush_in()
+{
+    int ch;
+    while((ch = fgetc(stdin)) != EOF && ch != '\n')
+    {
+    
+    }
+}
+
+
+

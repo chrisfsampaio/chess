@@ -11,5 +11,6 @@
 
 int letraParaNumero(char letra);
 char numeroParaLetra(int numero);
+void flush_in();
 
 #endif

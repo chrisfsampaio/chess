@@ -29,15 +29,29 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
     return tabuleiro;
 }
 
+Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
+{
+    if (linha > 7 || coluna > 7 || linha < 0 || coluna < 0)
+    {
+        printf("Coordenada invalida!");
+        return pecaNula();
+    }
+    return &tabuleiro->pecas[linha][coluna];
+}
 
-#warning Mike: Implementar get e set casa
-//Peca getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
-//{
-//
-//}
-
-//int setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca peca);
-//{
-//
-//}
+Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
+{
+    Peca pecaDestino = *getCasa(tabuleiro, linha, coluna);
+    if (lado(peca) == lado(&pecaDestino))
+    {
+        return NULL;
+    }
+    tabuleiro->pecas[peca->linha][peca->coluna] = *pecaNula();
+    tabuleiro->pecas[linha][coluna] = *peca;
+    tabuleiro->pecas[linha][coluna].linha = linha;
+    tabuleiro->pecas[linha][coluna].coluna = coluna;
+    
+    Peca *pecaRetorno = &pecaDestino;
+    return pecaRetorno;
+}
 
