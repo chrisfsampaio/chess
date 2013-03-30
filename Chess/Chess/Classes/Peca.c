@@ -77,13 +77,13 @@ char lado(Peca *peca)
         peca->simbolo == 'k' ||
         peca->simbolo == 'p')
     {
-        return 'B';
+        return 'P';
     }
     else if (peca->simbolo == 'x')
     {
         return 'X';
     }
-    return 'P';
+    return 'B';
 }
 
 int movePeca(Peca *peca, int linha, int coluna)
@@ -137,6 +137,16 @@ int movePeca(Peca *peca, int linha, int coluna)
             if (abs(peca->linha - linha) <= 1 && abs(peca->coluna - coluna) <= 1)
             {
 
+                return 0;
+            }
+            break;
+        
+        case 'P':
+            if (peca->linha == 1 &&
+                (linha - peca->linha == 1 ||
+                linha - peca->linha == 2) &&
+                coluna == peca->coluna)
+            {
                 return 0;
             }
             break;

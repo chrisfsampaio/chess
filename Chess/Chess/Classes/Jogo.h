@@ -30,6 +30,7 @@ typedef struct _jogo Jogo;
 Jogo *criaJogo();
 void display(Jogo *jogo, char *msg);
 void executaJogada(Jogo *jogo);
+void inverterTurno(Jogo *jogo);
 
 
 #endif

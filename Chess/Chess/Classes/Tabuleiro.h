@@ -21,5 +21,6 @@ typedef struct _tabuleiro Tabuleiro;
 Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas);
 Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna);
 Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca);
+int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna);
 
 #endif

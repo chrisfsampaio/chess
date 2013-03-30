@@ -31,8 +31,8 @@ Jogo *criaJogo()
     printf("\nDigite o nome do Jogador 2\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
     
-    strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
-    strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
+    //strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
+    //strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
     
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
@@ -77,7 +77,7 @@ Jogo *criaJogo()
 
 void display(Jogo *jogo, char *msg)
 {
-    printf("\n\n\n\n\t");
+    printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
     for (int i = 0; i < 8; i++)
     {
         char letra = numeroParaLetra(i);
@@ -118,15 +118,18 @@ void display(Jogo *jogo, char *msg)
         char letra = numeroParaLetra(i);
         printf("\t%c\t", letra);
     }
-    printf("\n\n%s\n",msg);
-
+    printf("\n\t\t\t\t\t\t\t\t%s\n%s\n", jogo->jogador2, msg);
     executaJogada(jogo);
 }
 
 void executaJogada(Jogo *jogo)
 {
     char jogada[6];
-    printf("Digite a jogada\n");
+    char msgJogador[40];
+    jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador1) : strcpy(msgJogador, jogo->jogador2);
+    strcat(msgJogador, ", digite a sua jogada\n");
+    printf("%s",msgJogador);
+    
     fgets(jogada, sizeof(jogada), stdin);
     flush_in();
     fflush(stdin);
@@ -138,37 +141,65 @@ void executaJogada(Jogo *jogo)
     int colunaDestino = letraParaNumero(jogada[4]);
     
     
-#warning Christian: implement the rules to move a piece
+//#warning Christian: implement the rules to move a piece
     
+    int jogadaOk = 0;
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
-    char msg[100];
+    char msg[50];
     strcpy(msg, "");
-    if (movePeca(&peca, linhaDestino, colunaDestino) == 0)
+    if (peca.simbolo != 'x' && lado(&peca) == jogo->turno)
     {
-        Peca *pecaRetorno = setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, &peca);
-        if (pecaRetorno == 0)
+        if (movePeca(&peca, linhaDestino, colunaDestino) == 0)
         {
-            strcat(msg, "Jogada Invalida, existe uma peca sua no destino");
+            int pecaNoCaminho = existePecaNoCaminho(jogo->tabuleiro, &peca, linhaDestino, colunaDestino);
+            if (peca.simbolo == 'h' || peca.simbolo == 'H' || pecaNoCaminho == 0)
+            {
+                Peca *pecaRetorno = setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, &peca);
+                if (pecaRetorno == 0)
+                {
+                    strcat(msg, "Jogada invalida, existe uma peca sua no destino");
+                }
+                else
+                {
+                    jogadaOk = 1;
+                    Peca pecaCapturada = *pecaRetorno;
+                    if (pecaCapturada.simbolo != 'x')
+                    {
+                        strcat(msg, "A peca -");
+                        strcat(msg, pecaCapturada.nome);
+                        strcat(msg, "- foi capturada!");
+                    }
+                }
+            }
+            else
+            {
+                strcat(msg, "Existe uma peca no caminho.");
+            }
         }
         else
         {
-            Peca pecaCapturada = *pecaRetorno;
-            if (pecaCapturada.simbolo != 'x')
-            {
-                strcat(msg, "A peca -");
-                strcat(msg, pecaCapturada.nome);
-                strcat(msg, "- foi capturada!");
-            }
+            strcat(msg, "A peca -");
+            //strcat(msg, peca.nome);
+            strcat(msg, "- nao consegue fazer o movimento solicitado");
         }
     }
     else
     {
-        strcat(msg, "A peca -");
-        strcat(msg, peca.nome);
-        strcat(msg, "- nao consegue fazer o movimento solicitado");
+        strcat(msg, "Cordenada de origem invalida.");
+    }
+    
+    if (jogadaOk)
+    {
+        inverterTurno(jogo);
     }
     display(jogo, msg);
 }
 
-
+void inverterTurno(Jogo *jogo)
+{
+    if (jogo->turno == 'B')
+        jogo->turno = 'P';
+    else
+        jogo->turno = 'B';
+}
 
