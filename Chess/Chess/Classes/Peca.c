@@ -52,11 +52,16 @@ Peca *criaPeca(int linha, int coluna, char simbolo)
     else
     {
         printf("Simbolo %c invalido!\nInicie a peca com um dos simbolos:\n t, T, h, H, b, B, q, Q, k, K, p, P\n", simbolo);
-        return pecaNula();
+        return NULL;
     }
-    
-#warning Mike: Validar numero maximo da linha e coluna seguindo o exemplo de como foi feita a validacao de simbolo
-    
+    if (peca->linha < 0 || peca->linha > 7){
+        printf("Numero maximo de Linhas invalido! Numero maximo para Linhas deve estar entre 0-7\n");
+        return NULL;
+    }
+    if (peca->coluna < 0 || peca->coluna > 7){
+        printf("Numero maximo de Colunas invalido! Numero maximo para Colunas deve estar entre 0-7\n");
+        return NULL;
+    }
     return peca;
 }
 
