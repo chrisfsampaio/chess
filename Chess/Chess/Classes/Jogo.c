@@ -2,10 +2,17 @@
 //  Jogo.c
 //  Chess
 //
-//  Created by Christian on 3/25/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
+//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
 //
+/*         - Tipo Abstrato de Dados -                   *
+ *  - Arquivo que armazena todas as implementacoes das  *
+ *   funcoes da TAD Jogo.                               */
 
+
+/*         - Incluindo as TADs e Bibliotecas -              *
+ *  - Tablueiro.h e Peca.h;                                 *
+ *  - Bibliotecas que seram utilizadas durante as imple-    *
+ *  mentacoes.                                              */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -20,16 +27,26 @@
 //#define CLEAR() system("clear");
 //#endif
 
+/*         - Funcao criaJogo() -                            *
+ *  - Cria estrutura do tipo Jogo do tamanho de Jogo        *
+ *  - Armazena e mostra na tela o nome de cada jogador e    *
+ *  o titulo do jogo;                                       *
+ *  - Verifica se os nomes do jogadores sao diferentes;     *
+ *  - Cria todas as pecas e armazena no vetor pecas[32];    *
+ *  - Cria tabuleiro e coloca as pecas nos lugares;         *
+ *  - Inicia o turno das pecas Brancas (Regra do Xadrez).   */
 Jogo *criaJogo()
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
-    
+        
     printf("Digite o nome do Jogador 1\n");
     fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
     
-#warning Mike: Certificar de que os nomes nao sejam iguais ( dica: use while (= );
-    printf("\nDigite o nome do Jogador 2\n");
+    do {
+    printf("\nDigite o nome do Jogador 2\nOBS: Deve ser diferente do Jogador 1\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
+    } while (strcmp(jogo->jogador1, jogo->jogador2) == 0);
+    
     
     //strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
     //strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
@@ -127,7 +144,7 @@ void executaJogada(Jogo *jogo)
     char jogada[6];
     char msgJogador[40];
     jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador1) : strcpy(msgJogador, jogo->jogador2);
-    strcat(msgJogador, ", digite a sua jogada\n");
+    strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b)\n");
     printf("%s",msgJogador);
     
     fgets(jogada, sizeof(jogada), stdin);

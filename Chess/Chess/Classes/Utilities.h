@@ -2,8 +2,9 @@
 //  Utilities.h
 //  Chess
 //
-//  Created by Christian on 3/29/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
+//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//
+//  
 //
 
 #ifndef Chess_Utilities_h
