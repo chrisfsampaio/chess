@@ -92,6 +92,12 @@ Jogo *criaJogo()
     return jogo;
 }
 
+/*         - Funcao display() -                            *
+ *  - Mostra na tela o tabuleiro que contem as linhas e    *
+ *  colunas nomeadas, todas as pecas posicionadas corre    *
+ *  mente e nome dos dois jogares nos devidos times;       *
+ *  - Chama funcao executaJogada,passando estrutura jogo   *
+ *  por valor.                                             */
 void display(Jogo *jogo, char *msg)
 {
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
@@ -139,6 +145,17 @@ void display(Jogo *jogo, char *msg)
     executaJogada(jogo);
 }
 
+/*         - Funcao executaJogada() -                       *
+ *  - Cria variavel char para receber a jogada;             *
+ *  - Cria variavel char para mensagem dos Jogadores;       *
+ *  - Verifica se eh o turno das pecas Brancas e envia men- *
+ *  sagem para o jogador realizar a jogada, se nao eh o     *
+ *  turno das pecas Pretas;                                 *
+ *  - Recebe a jogada e atruibui os valores origem/destino  *
+ *  para as variaveis correspondentes;                      *
+ *  - Inveter o turno a cada jogada;                        *
+ *  - Realiza todos os movimentos das pecas, verificando    *
+ *  se os movimentos sao validos e verifica Xeque Mate.     */
 void executaJogada(Jogo *jogo)
 {
     char jogada[6];
@@ -227,6 +244,8 @@ void executaJogada(Jogo *jogo)
     display(jogo, msg);
 }
 
+/*         - Funcao inverterTurno() -                       *
+ *  - Inverte o turno dos jogadores.                        */
 void inverterTurno(Jogo *jogo)
 {
     if (jogo->turno == 'B')

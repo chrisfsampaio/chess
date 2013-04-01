@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
 //
 /*         - Tipo Abstrato de Dados -                   *
- *  - Arquivo Header que armazena todas as definicoes    *
+ *  - Arquivo Header que armazena todas as definicoes   *
  *  da TAD Jogo como: estrutura Jogo que armazena o     *
  *  estado do jogo em andamento.                        *
  *                                                      */
@@ -15,12 +15,12 @@
 
 
 /*         - Incluindo as TADs -    *
- *  - Tablueiro.h e Peca.h        */
+ *  - Tablueiro.h e Peca.h          */
 #include "Tabuleiro.h"
 #include "Peca.h"
 
 /*  - Definindo o tamanho maximo para armazenar o nome    *
- *  de cada jogador                                     */
+ *  de cada jogador                                       */
 #define kComprimentoNome 25
 
 /*         - Definindo a estrutura Jogo -                  *
