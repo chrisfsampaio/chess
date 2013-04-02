@@ -97,7 +97,8 @@ Jogo *criaJogo()
  *  colunas nomeadas, todas as pecas posicionadas corre    *
  *  mente e nome dos dois jogares nos devidos times;       *
  *  - Chama funcao executaJogada,passando estrutura jogo   *
- *  por valor.                                             */
+ *  por valor.   
+#Warning **Arrumar tabulacao para funcionar no Windows                                          */
 void display(Jogo *jogo, char *msg)
 {
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
