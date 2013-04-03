@@ -4,12 +4,26 @@
 //
 //  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
 //
-//
+/*         - Tipo Abstrato de Dados -                   *
+ *  - Arquivo que armazena todas as implementacoes das  *
+ *   funcoes da TAD Tabuleiro.                          */
 
+/*         - Incluindo as TADs e Bibliotecas -              *
+ *  - Tablueiro.h                                           *
+ *  - Bibliotecas que seram utilizadas durante as imple-    *
+ *  mentacoes.                                              */
 #include <stdio.h>
 #include <stdlib.h>
 #include "Tabuleiro.h"
 
+/*         - Funcao criaTabuleiro() -                       *
+ *  - Cria ponteiro para Tabuleiro e aloca tamanho da       *
+ *  variavel Tabuleiro;                                     *
+ *  - Preenche tabuleiro com valores apontador por          *
+ *  pecaNula();                                             *
+ *  - Preenche o lado de cada time com suas respectivas     *
+ *  pecas;                                                  *
+ *  - Retorna tabuleiro completo.                           */
 Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
 {
     Tabuleiro *tabuleiro = (Tabuleiro *)malloc(sizeof(Tabuleiro));
@@ -29,6 +43,11 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
     return tabuleiro;
 }
 
+/*         - Funcao getCasa() -                             *
+ *  - Verifica se a casa nao ultrapassou as coodernadas do  *
+ *  tabuleiro e envia mensagem caso ultrapasse;             *
+ *  pecas;                                                  *
+ *  - Retorna o endereco da jogada realizada.               */
 Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
 {
     if (linha > 7 || coluna > 7 || linha < 0 || coluna < 0)
@@ -39,6 +58,10 @@ Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
     return &tabuleiro->pecas[linha][coluna];
 }
 
+/*         - Funcao setCasa() -                             *
+ *  - Cria pecaDestino do tipo estrutura Peca e armazena    *
+ *  o conteudo apontado por getCasa;                        *
+ *  -   */
 Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
 {
     Peca pecaDestino = *getCasa(tabuleiro, linha, coluna);

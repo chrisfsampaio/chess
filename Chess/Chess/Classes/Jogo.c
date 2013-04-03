@@ -47,7 +47,6 @@ Jogo *criaJogo()
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
     } while (strcmp(jogo->jogador1, jogo->jogador2) == 0);
     
-    
     //strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
     //strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
     
@@ -95,7 +94,7 @@ Jogo *criaJogo()
 /*         - Funcao display() -                            *
  *  - Mostra na tela o tabuleiro que contem as linhas e    *
  *  colunas nomeadas, todas as pecas posicionadas corre    *
- *  mente e nome dos dois jogares nos devidos times;       *
+ *  tamente e nome dos dois jogares nos devidos times;     *
  *  - Chama funcao executaJogada,passando estrutura jogo   *
  *  por valor.   
 #Warning **Arrumar tabulacao para funcionar no Windows                                          */
@@ -224,7 +223,7 @@ void executaJogada(Jogo *jogo)
         else
         {
             strcat(msg, "A peca -");
-            //strcat(msg, peca.nome);
+           // strcat(msg, peca.nome);
             strcat(msg, "- nao consegue fazer o movimento solicitado");
         }
     }

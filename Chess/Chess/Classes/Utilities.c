@@ -4,12 +4,21 @@
 //
 //  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
 //
-//
-//
+/*         - Tipo Abstrato de Dados -                   *
+ *  - Arquivo que armazena todas as implementacoes das  *
+ *   funcoes da TAD Utilities.                          */
 
+/*         - Incluindo as TADs e Bibliotecas -              *
+ *  - Utilities.h                                           *
+ *  - Bibliotecas que seram utilizadas durante as imple-    *
+ *  mentacoes.                                              */
 #include <stdio.h>
 #include "Utilities.h"
 
+/*         - Funcao letraParaNumero() -                     *
+ *  - Cria funcao que converter letras para numeros que sao *
+ *  utilizados para atribuir as variaveis colunaOrigem e    *
+ *  coluneDestino que realizam as jogadas                   */
 int letraParaNumero(char letra)
 {
     switch (letra)
@@ -70,7 +79,9 @@ int letraParaNumero(char letra)
     return -1;
 }
 
-
+/*         - Funcao numeroParaLetra() -                     *
+ *  - Cria funcao que converter numeros para letras que sao *
+ *  utilizadas para nomear as colunas do tabuleiro          */
 char numeroParaLetra(int numero)
 {
     switch (numero)
@@ -115,6 +126,8 @@ char numeroParaLetra(int numero)
     return 'X';
 }
 
+/*         - Funcao numeroParaLetra() -                     *
+ *  - Cria funcao para limpar buffer do teclado (Linux      */
 void flush_in()
 {
     int ch;
