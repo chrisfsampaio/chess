@@ -21,30 +21,11 @@
 
 
 ///Christian TODO: clear screen whether on Windos or POSIX
-//#ifdef _WIN32
-//#define CLEAR() system("cls");
-//#elif __APPPLE__
-//#define CLEAR() system("clear");
-//#endif
-#warning Chris: Testar: Esse comando eh pra ele atualizar a janela no Windows sem "rolar" pra baixo e printar de novo?
-
-/*void cls(void)
-{
-    #ifdef linux || LINUX || Linux || UNIX
-    //código especifico para linux
-    //system ("clear");//poderia ser este mas escolhi este outro pois é mais a cara do C
-    printf("\e[H\e[2J");
-    printf("\nPoder do Linux\n\n");
-    #elif defined WIN32 || Win32 || win32
-    //código específico para windows
-    system ("cls");
-    printf("\ne' Windows hahahahaha\n\n");
-    #else
-    printf("\e[H\e[2J");
-    printf("\nEste sistema nem sei quem é\n\n");
-    #endif
-
-}*/
+#ifdef _WIN32
+#define CLEAR_WIN() system("cls");
+#elif __APPPLE__
+#define CLEAR_MAC() system("clear");
+#endif
 
 /*         - Funcao criaJogo() -                            *
  *  - Cria estrutura do tipo Jogo do tamanho de Jogo        *
@@ -57,18 +38,18 @@
 Jogo *criaJogo()
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
-
-    printf("Digite o nome do Jogador 1\n");
-    fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
-
-    do {
-    printf("\nDigite o nome do Jogador 2\nOBS: Deve ser diferente do Jogador 1\n");
+    
+    printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
+    fgets(jogo->jogador1, sizeof(jogo->jogador1-'\0'), stdin);
+        
+    do{
+    printf("Digite o nome do Jogador 2\n#ATENCAO# Deve ser diferente do Jogador 1 e conter pelo menos um caracter\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
-    } while (strcmp(jogo->jogador1, jogo->jogador2) == 0);
+    } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));
 
-    //strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
-    //strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
+    //strcpy(jogo->titulo, "CHESS GAME");
 
+    
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
     pecas[1] = *criaPeca(0, 1, 'H');
@@ -118,13 +99,23 @@ Jogo *criaJogo()
  *  por valor.                                             */
 void display(Jogo *jogo, char *msg)
 {
+    #ifdef _WIN32
+    CLEAR_WIN();
+    #elif __APPPLE__
+    CLEAR_MAC();
+    #endif
+    
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
     for (int i = 0; i < 8; i++)
     {
         char letra = numeroParaLetra(i);
         printf("\t%c\t", letra);
     }
-    printf("\n\t-----------------------------------------------------------------\n");
+    #ifdef _WIN32
+    printf("\n\t+---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+\n");
+    #elif __APPLE__
+    printf("\n\t+-------+-------+-------+-------+-------+-------+-------+-------+\n");
+    #endif
     for (int i = 0; i < 8; i++)
     {
         printf("\t|");
@@ -151,7 +142,11 @@ void display(Jogo *jogo, char *msg)
         {
             printf("\t\t|");
         }
-        printf("\n\t-----------------------------------------------------------------\n");
+        #ifdef _WIN32
+        printf("\n\t---------------+---------------+---------------+---------------+---------------+---------------+---------------+---------------+\n");
+        #elif __APPLE__
+        printf("\n\t+-------+-------+-------+-------+-------+-------+-------+-------+\n");
+        #endif
     }
     printf("\t");
     for (int i = 0; i < 8; i++)
@@ -191,9 +186,6 @@ void executaJogada(Jogo *jogo)
 
     int linhaDestino = ((int)jogada[3] - '0') - 1;
     int colunaDestino = letraParaNumero(jogada[4]);
-
-
-//#warning Christian: implement the rules to move a piece
 
     int jogadaOk = 0;
     int fimDeJogo = 0;

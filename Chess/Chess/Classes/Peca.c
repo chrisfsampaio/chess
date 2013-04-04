@@ -161,7 +161,6 @@ int movePeca(Peca *peca, int linha, int coluna)
             {
                 return 0;
             }
-
             break;
 
         case 'p':
