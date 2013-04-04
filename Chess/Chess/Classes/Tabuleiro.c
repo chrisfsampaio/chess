@@ -39,7 +39,7 @@ Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
         Peca peca = pecas[i];
         tabuleiro->pecas[peca.linha][peca.coluna] = peca;
     }
-    
+
     return tabuleiro;
 }
 
@@ -73,7 +73,7 @@ Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
     tabuleiro->pecas[linha][coluna] = *peca;
     tabuleiro->pecas[linha][coluna].linha = linha;
     tabuleiro->pecas[linha][coluna].coluna = coluna;
-    
+
     Peca *pecaRetorno = &pecaDestino;
     return pecaRetorno;
 }
@@ -82,7 +82,7 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
 {
     int linhaOrigem = peca->linha;
     int colunaOrigem = peca->coluna;
-    
+
     if (linhaOrigem != linha && colunaOrigem != coluna)
     {
         int dirX = coluna > colunaOrigem ? 1 : -1;
@@ -108,7 +108,7 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
             dirX = -1;
         else if (coluna == colunaOrigem)
             dirX = 0;
-        
+
         int dirY;
         if (linha > linhaOrigem)
             dirY = 1;
@@ -116,9 +116,9 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
             dirY = -1;
         else if (linha == linhaOrigem)
             dirY = 0;
-        
+
         int distance = coluna == colunaOrigem ? linha - linhaOrigem : coluna - colunaOrigem;
-        
+
         for (int i = 1; i < abs(distance); i++)
         {
             int nextX = colunaOrigem + i * dirX;
@@ -133,4 +133,3 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
     }
     return 1;
 }
-

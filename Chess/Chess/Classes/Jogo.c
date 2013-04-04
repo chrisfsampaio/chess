@@ -26,6 +26,24 @@
 //#else
 //#define CLEAR() system("clear");
 //#endif
+#warning Chris: Testar
+/*void cls(void)
+{
+    #ifdef linux || LINUX || Linux || UNIX
+    //código especifico para linux
+    //system ("clear");//poderia ser este mas escolhi este outro pois é mais a cara do C
+    printf("\e[H\e[2J");
+    printf("\nPoder do Linux\n\n");
+    #elif defined WIN32 || Win32 || win32
+    //código específico para windows
+    system ("cls");
+    printf("\ne' Windows hahahahaha\n\n");
+    #else
+    printf("\e[H\e[2J");
+    printf("\nEste sistema nem sei quem é\n\n");
+    #endif
+
+}*/
 
 /*         - Funcao criaJogo() -                            *
  *  - Cria estrutura do tipo Jogo do tamanho de Jogo        *
@@ -38,18 +56,18 @@
 Jogo *criaJogo()
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
-        
+
     printf("Digite o nome do Jogador 1\n");
     fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
-    
+
     do {
     printf("\nDigite o nome do Jogador 2\nOBS: Deve ser diferente do Jogador 1\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
     } while (strcmp(jogo->jogador1, jogo->jogador2) == 0);
-    
+
     //strcpy(jogo->titulo, strcat(jogo->jogador1, " X "));
     //strcpy(jogo->titulo, strcat(jogo->titulo, jogo->jogador2));
-    
+
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
     pecas[1] = *criaPeca(0, 1, 'H');
@@ -83,11 +101,11 @@ Jogo *criaJogo()
     pecas[29] = *criaPeca(7, 5, 'b');
     pecas[30] = *criaPeca(7, 6, 'h');
     pecas[31] = *criaPeca(7, 7, 't');
-    
+
     Tabuleiro *tabuleiro = criaTabuleiro(pecas, 32);
     jogo->tabuleiro = tabuleiro;
     jogo->turno = 'B';
-    
+
     return jogo;
 }
 
@@ -96,8 +114,7 @@ Jogo *criaJogo()
  *  colunas nomeadas, todas as pecas posicionadas corre    *
  *  tamente e nome dos dois jogares nos devidos times;     *
  *  - Chama funcao executaJogada,passando estrutura jogo   *
- *  por valor.   
-#Warning **Arrumar tabulacao para funcionar no Windows                                          */
+ *  por valor.                                             */
 void display(Jogo *jogo, char *msg)
 {
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
@@ -132,7 +149,7 @@ void display(Jogo *jogo, char *msg)
         for (int j = 0; j < 8; j++)
         {
             printf("\t\t|");
-        }        
+        }
         printf("\n\t-----------------------------------------------------------------\n");
     }
     printf("\t");
@@ -163,20 +180,20 @@ void executaJogada(Jogo *jogo)
     jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador1) : strcpy(msgJogador, jogo->jogador2);
     strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b)\n");
     printf("%s",msgJogador);
-    
+
     fgets(jogada, sizeof(jogada), stdin);
     flush_in();
     fflush(stdin);
-    
+
     int linhaOrigem = ((int)jogada[0] - '0') - 1;
     int colunaOrigem = letraParaNumero(jogada[1]);
-    
+
     int linhaDestino = ((int)jogada[3] - '0') - 1;
     int colunaDestino = letraParaNumero(jogada[4]);
-    
-    
+
+
 //#warning Christian: implement the rules to move a piece
-    
+
     int jogadaOk = 0;
     int fimDeJogo = 0;
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
@@ -223,7 +240,7 @@ void executaJogada(Jogo *jogo)
         else
         {
             strcat(msg, "A peca -");
-           // strcat(msg, peca.nome);
+            //strcat(msg, peca.nome);
             strcat(msg, "- nao consegue fazer o movimento solicitado");
         }
     }
@@ -231,7 +248,7 @@ void executaJogada(Jogo *jogo)
     {
         strcat(msg, "Cordenada de origem invalida.");
     }
-    
+
     if (jogadaOk)
     {
         inverterTurno(jogo);
