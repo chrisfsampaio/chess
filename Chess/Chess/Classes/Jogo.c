@@ -40,15 +40,17 @@ Jogo *criaJogo()
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
     
     printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
-    fgets(jogo->jogador1, sizeof(jogo->jogador1-'\0'), stdin);
+    fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
+    strtok(jogo->jogador1, "\n");
         
     do{
     printf("Digite o nome do Jogador 2\n#ATENCAO# Deve ser diferente do Jogador 1 e conter pelo menos um caracter\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
+    strtok(jogo->jogador2, "\n");
+
     } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));
 
-    //strcpy(jogo->titulo, "CHESS GAME");
-
+    strcpy(jogo->titulo, "+CHESS GAME+");
     
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
@@ -104,6 +106,9 @@ void display(Jogo *jogo, char *msg)
     #elif __APPPLE__
     CLEAR_MAC();
     #endif
+    
+    printf("\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n\t*%35s\t\t\t\t\t\t\t*\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n", jogo->titulo);
+    printf("\t%26s\t X\t %s", jogo->jogador1, jogo->jogador2);
     
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
     for (int i = 0; i < 8; i++)
@@ -172,7 +177,7 @@ void display(Jogo *jogo, char *msg)
 void executaJogada(Jogo *jogo)
 {
     char jogada[6];
-    char msgJogador[40];
+    char msgJogador[100];
     jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador1) : strcpy(msgJogador, jogo->jogador2);
     strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b)\n");
     printf("%s",msgJogador);
