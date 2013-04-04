@@ -105,9 +105,9 @@ int movePeca(Peca *peca, int linha, int coluna)
             {
 
                 return 0;
-            }            
+            }
             break;
-            
+
         case 'b':
         case 'B':
             if (abs(peca->coluna - coluna) == abs(peca->linha - linha))
@@ -116,7 +116,7 @@ int movePeca(Peca *peca, int linha, int coluna)
                 return 0;
             }
             break;
-        
+
         case 'h':
         case 'H':
             if ((abs(peca->linha - linha) == 2 && abs(peca->coluna - coluna) == 1) ||
@@ -126,7 +126,7 @@ int movePeca(Peca *peca, int linha, int coluna)
                 return 0;
             }
             break;
-            
+
         case 'q':
         case 'Q':
             if ((abs(peca->coluna - coluna) == 0 || abs(peca->linha - linha == 0)) ||
@@ -136,7 +136,7 @@ int movePeca(Peca *peca, int linha, int coluna)
                 return 0;
             }
             break;
-        
+
         case 'k':
         case 'K':
             if (abs(peca->linha - linha) <= 1 && abs(peca->coluna - coluna) <= 1)
@@ -145,7 +145,7 @@ int movePeca(Peca *peca, int linha, int coluna)
                 return 0;
             }
             break;
-        
+
         case 'P':
             if (peca->linha == 1 &&
                 (linha - peca->linha == 1 ||
@@ -154,8 +154,16 @@ int movePeca(Peca *peca, int linha, int coluna)
             {
                 return 0;
             }
+
+            if (peca->linha < 7 &&
+                linha - peca->linha == 1 &&
+                coluna == peca->coluna)
+            {
+                return 0;
+            }
+
             break;
-            
+
         case 'p':
             if (peca->linha == 6 &&
                 (peca->linha - linha == 1 ||
@@ -164,8 +172,15 @@ int movePeca(Peca *peca, int linha, int coluna)
             {
                 return 0;
             }
+
+            if (peca->linha > 1 &&
+                peca->linha - linha == 1 &&
+                coluna == peca->coluna)
+            {
+                return 0;
+            }
             break;
-            
+
         default:
             break;
     }

@@ -23,10 +23,11 @@
 ///Christian TODO: clear screen whether on Windos or POSIX
 //#ifdef _WIN32
 //#define CLEAR() system("cls");
-//#else
+//#elif __APPPLE__
 //#define CLEAR() system("clear");
 //#endif
-#warning Chris: Testar
+#warning Chris: Testar: Esse comando eh pra ele atualizar a janela no Windows sem "rolar" pra baixo e printar de novo?
+
 /*void cls(void)
 {
     #ifdef linux || LINUX || Linux || UNIX
@@ -240,7 +241,7 @@ void executaJogada(Jogo *jogo)
         else
         {
             strcat(msg, "A peca -");
-            //strcat(msg, peca.nome);
+            strcat(msg, peca.nome);
             strcat(msg, "- nao consegue fazer o movimento solicitado");
         }
     }
