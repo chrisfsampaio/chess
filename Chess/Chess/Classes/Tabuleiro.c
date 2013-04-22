@@ -2,7 +2,7 @@
 //  Tabuleiro.c
 //  Chess
 //
-//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//  Copyright (c) 2013 VoIP. All rights reserved.
 //
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo que armazena todas as implementacoes das  *

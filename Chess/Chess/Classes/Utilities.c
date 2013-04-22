@@ -2,7 +2,7 @@
 //  Utilities.c
 //  Chess
 //
-//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//  Copyright (c) 2013 VoIP. All rights reserved.
 //
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo que armazena todas as implementacoes das  *
@@ -127,7 +127,7 @@ char numeroParaLetra(int numero)
 }
 
 /*         - Funcao numeroParaLetra() -                     *
- *  - Cria funcao para limpar buffer do teclado (Linux      */
+ *  - Cria funcao para limpar buffer do teclado (Linux)     */
 void flush_in()
 {
     int ch;

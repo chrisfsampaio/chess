@@ -2,7 +2,7 @@
 //  Tabuleiro.h
 //  Chess
 //
-//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//  Copyright (c) 2013 VoIP. All rights reserved.
 //
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo Header que armazena todas as definicoes   *
@@ -26,7 +26,7 @@ struct _tabuleiro
 
 typedef struct _tabuleiro Tabuleiro;
 
-/*          - Declarando os Headers da funcoes da TAD Tabuleiro  */
+/*         - Declarando os Headers da funcoes da TAD Tabuleiro  */
 Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas);
 Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna);
 Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca);

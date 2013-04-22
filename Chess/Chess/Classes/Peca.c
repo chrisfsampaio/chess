@@ -2,23 +2,33 @@
 //  Peca.c
 //  Chess
 //
-//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//  Copyright (c) 2013 VoIP. All rights reserved.
 //
-//
+/*         - Tipo Abstrato de Dados -                   *
+ *  - Arquivo Header que armazena todas as definicoes   *
+ *  da TAD Peca como: estrutura Peca que armazena os    *
+ *  atributos das pecas.                                */
 
+/*         - Incluindo as TADs e Bibliotecas -              *
+ *  - Peca.h;                                 *
+ *  - Bibliotecas que seram utilizadas durante as imple-    *
+ *  mentacoes.                                              */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "Peca.h"
 
-//o Torre:'t'
-//o Cavalo:'h'
-//o Bispo:'b'
-//o Rainha:'q'
-//o Rei:'k'
-//o Peão:'p'
-
-
+/*         - Funcao criaPeca() -                            *
+ *  - Cria uma variavel do tipo estrutura Peca do tamanho   *
+ *  de Peca.                                                *
+ *  - Seta as variaveis linha, coluna e simbolo de acordo   *
+ *  com os valores recebidos por referencia.                *
+ *  - Verifica o simbolo recebido e copia o nome para a     *
+ *  variavel peca->simbolo para todos os simbolos.          *
+ *  - Caso os simbolos sejam incorretos, imprime mensagem   *
+ *  de erro.                                                *
+ *  - Caso variavel peca->linha ou peca->coluna seja maior  *
+ *  que o tabuleiro, imprime mensagem de erro.              */
 Peca *criaPeca(int linha, int coluna, char simbolo)
 {
     Peca *peca = (Peca *)malloc(sizeof(Peca));
@@ -65,6 +75,11 @@ Peca *criaPeca(int linha, int coluna, char simbolo)
     return peca;
 }
 
+/*         - Funcao pecaNula() -                            *
+ *  - Cria variavel peca do tipo estrutura Peca do tamanho  *
+ *  de Peca.                                                *
+ *  - Atribui a letra x para variavel peca->simbolo e       *
+ *  retorna a estrutura peca.                               */
 Peca *pecaNula()
 {
     Peca *peca = (Peca *)malloc(sizeof(Peca));
@@ -73,6 +88,12 @@ Peca *pecaNula()
     return peca;
 }
 
+/*         - Funcao lado() -                            *
+ *  - Recebe a estrutura peca do tipo Peca.             *
+ *  - Verifica se os simbolos sao caracteres minusculos *
+ *  e retorna o simbolo P (pecas pretas). Se for        *
+ *  simbolo 'x', retorna o caractere X, se nao retonra  *
+ *  o caractere B (pecas brancas).                      */
 char lado(Peca *peca)
 {
     if (peca->simbolo == 't' ||
@@ -91,6 +112,13 @@ char lado(Peca *peca)
     return 'B';
 }
 
+/*         - Funcao movePeca() -                            *
+ *  - Recebe a estrutura Peca por referencia, a linha e     *
+ *  coluna.                                                 *
+ *  - Verifica se a linha ou coluna eh maior que o tabulei- *
+ *  ro.                                                     *
+ *  - Realiza o movimento de cada peca dependendo do simbo- *
+ *  lo recebido na funcao.                                  */
 int movePeca(Peca *peca, int linha, int coluna)
 {
     if (linha > 7 || coluna > 7)

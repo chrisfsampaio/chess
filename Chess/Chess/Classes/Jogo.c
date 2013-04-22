@@ -2,7 +2,7 @@
 //  Jogo.c
 //  Chess
 //
-//  Copyright (c) 2013 NOME_DO_GRUPO. All rights reserved.
+//  Copyright (c) 2013 VoIP. All rights reserved.
 //
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo que armazena todas as implementacoes das  *
@@ -38,11 +38,11 @@
 Jogo *criaJogo()
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
-    
+
     printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
     fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
     strtok(jogo->jogador1, "\n");
-        
+
     do{
     printf("Digite o nome do Jogador 2\n#ATENCAO# Deve ser diferente do Jogador 1 e conter pelo menos um caracter\n");
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
@@ -51,7 +51,7 @@ Jogo *criaJogo()
     } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));
 
     strcpy(jogo->titulo, "+CHESS GAME+");
-    
+
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
     pecas[1] = *criaPeca(0, 1, 'H');
@@ -106,11 +106,17 @@ void display(Jogo *jogo, char *msg)
     #elif __APPPLE__
     CLEAR_MAC();
     #endif
-    
+
+    #ifdef _WIN32
+    printf("\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n\t*%70s\t\t\t\t\t\t\t\t*\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n", jogo->titulo);
+    printf("\t%56s\t X\t %s", jogo->jogador1, jogo->jogador2);
+    printf("\n\n\n\n\t\t\t\t\t\t\t\t%10s\n\t", jogo->jogador1);
+    #elif __APPLE__
     printf("\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n\t*%35s\t\t\t\t\t\t\t*\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n", jogo->titulo);
     printf("\t%26s\t X\t %s", jogo->jogador1, jogo->jogador2);
-    
     printf("\n\n\n\n\t\t\t\t\t\t\t\t%s\n\t", jogo->jogador1);
+    #endif
+
     for (int i = 0; i < 8; i++)
     {
         char letra = numeroParaLetra(i);
@@ -159,7 +165,13 @@ void display(Jogo *jogo, char *msg)
         char letra = numeroParaLetra(i);
         printf("\t%c\t", letra);
     }
+
+    #ifdef _WIN32
+    printf("\n\t\t\t\t\t\t\t\t%10s\n%s\n", jogo->jogador2, msg);
+    #elif __APPLE__
     printf("\n\t\t\t\t\t\t\t\t%s\n%s\n", jogo->jogador2, msg);
+    #endif
+
     executaJogada(jogo);
 }
 
