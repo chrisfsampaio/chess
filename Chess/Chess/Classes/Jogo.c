@@ -205,6 +205,7 @@ void executaJogada(Jogo *jogo)
     int colunaDestino = letraParaNumero(jogada[4]);
 
     int jogadaOk = 0;
+    int peaoCaptura = 0;
     int fimDeJogo = 0;
     Peca peca = jogo->tabuleiro->pecas[linhaOrigem][colunaOrigem];
     char msg[200];
@@ -216,6 +217,14 @@ void executaJogada(Jogo *jogo)
             int pecaNoCaminho = existePecaNoCaminho(jogo->tabuleiro, &peca, linhaDestino, colunaDestino);
             if (peca.simbolo == 'h' || peca.simbolo == 'H' || pecaNoCaminho == 0)
             {
+                if ((peca.simbolo == 'p' || peca.simbolo == 'P') && linhaDestino != linhaOrigem && colunaDestino != colunaOrigem)
+                {
+                    Peca *pecaDestino = &jogo->tabuleiro->pecas[linhaDestino][colunaDestino];
+                    if (lado(pecaDestino) == lado(&peca) || pecaDestino == pecaNula())
+                    {
+                        strcat(msg, "Jogada invalida");
+                    }
+                }
                 Peca *pecaRetorno = setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, &peca);
                 if (pecaRetorno == 0)
                 {
