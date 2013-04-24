@@ -1,9 +1,16 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3º Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  C‡ssio Ot‡vio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Nat‹ Komirchuk de Jesus
+//
 //  Peca.c
-//  Chess
-//
-//  Copyright (c) 2013 VoIP. All rights reserved.
-//
+
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo Header que armazena todas as definicoes   *
  *  da TAD Peca como: estrutura Peca que armazena os    *
@@ -191,7 +198,7 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
             {
                 return 0;
             }
-            
+
             if (abs(peca->coluna - coluna) == 1 &&
                 abs(peca->linha - linha) == 1 &&
                 captura == 1)
@@ -217,7 +224,7 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
             {
                 return 0;
             }
-            
+
             if (abs(peca->coluna - coluna) == 1 &&
                 abs(peca->linha - linha) == 1 &&
                 captura == 1)
@@ -232,3 +239,80 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
     return -1;
 }
 
+
+/*          - Funcao: criaListaPecas -                              *
+ * Descricao: inicia a lista de pecas                               *
+ * Retorno: ListaPecas lista - ponteiro para a lista de pecas criada*/
+ListaPecas* criaListaPecas()
+{
+   ListaPecas *lista = (ListaPecas *)malloc(sizeof(ListaPecas));
+   lista->inicio = NULL;
+   return lista;
+}
+
+
+/*          - Funcao: addPecaLista -                            *
+ * Descricao: adiciona uma nova peca na lista de pecas.         *
+ * Parametros:                                                  *
+ *  1. ListaPecas *lista - ponteiro para a lista de pecas       *
+ *  2. int linha - numero da linha da peca                      *
+ *  3. int coluna - numero da coluna da peca                    *
+ *  4. char simbolo - o simbolo representativo da pecas         *
+ * Retorno: int status - codigo da operacao efetuada            */
+int addPecaLista(ListaPecas *lista, int linha, int coluna, char simbolo)
+{
+
+    int status = 1;
+
+    // Verifica se a lista de pecas foi criada
+    if(lista != NULL)
+    {
+
+       // Aloca memoria para nova peca
+       Peca *novoNoPeca = (Peca *)malloc(sizeof(Peca));
+
+       // Testa se o a memoria para a nova peca foi alocada
+       if(novoNoPeca != NULL)
+       {
+
+            novoNoPeca->coluna = coluna;
+            novoNoPeca->linha = linha;
+            novoNoPeca->simbolo = simbolo;
+            novoNoPeca->capturada = 0;
+            novoNoPeca->prox = NULL;
+
+           // Verifica se a lista esta vazia
+           if (lista->inicio == NULL) {
+              novoNoPeca->prox = NULL;
+           } else {
+              novoNoPeca->prox = lista->inicio;
+           }
+           lista->inicio = novoNoPeca;
+
+       }
+       else
+       {
+           status = -2;
+       }
+
+    }
+    else
+    {
+        status = -3;
+    }
+
+    return status;
+}
+
+
+/*
+ * Funcao: getPecaLinha
+ * Descricao: adiciona uma nova peca na lista de pecas.
+ * Parametros:
+ *  1. ListaPecas *lista - ponteiro para a lista de pecas
+ *  2. int linha - numero da linha da peca
+ *  3. int coluna - numero da coluna da peca
+ *  4. char simbolo - o simbolo representativo da pecas
+ *
+ * Retorno: int status - codigo da operacao efetuada
+*/

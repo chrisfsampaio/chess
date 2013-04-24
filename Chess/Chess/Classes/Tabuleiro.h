@@ -1,9 +1,16 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3∫ Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  Cássio Otávio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Natã Komirchuk de Jesus
+//
 //  Tabuleiro.h
-//  Chess
-//
-//  Copyright (c) 2013 VoIP. All rights reserved.
-//
+
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo Header que armazena todas as definicoes   *
  *  da TAD Tabuleiro.                                   */
@@ -22,6 +29,7 @@
 struct _tabuleiro
 {
     Peca pecas[8][8];
+    ListaPecas *lista;
 };
 
 typedef struct _tabuleiro Tabuleiro;

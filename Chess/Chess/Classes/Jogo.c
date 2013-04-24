@@ -1,9 +1,16 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3∫ Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  Cássio Otávio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Natã Komirchuk de Jesus
+//
 //  Jogo.c
-//  Chess
-//
-//  Copyright (c) 2013 VoIP. All rights reserved.
-//
+
 /*         - Tipo Abstrato de Dados -                   *
  *  - Arquivo que armazena todas as implementacoes das  *
  *   funcoes da TAD Jogo.                               */
@@ -20,7 +27,6 @@
 #include "Utilities.h"
 
 
-///Christian TODO: clear screen whether on Windos or POSIX
 #ifdef _WIN32
 #define CLEAR_WIN() system("cls");
 #elif __APPPLE__
@@ -50,7 +56,43 @@ Jogo *criaJogo()
 
     } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));
 
-    strcpy(jogo->titulo, "+CHESS GAME+");
+    strcpy(jogo->titulo, "+JOGO DE XADREZ+");
+
+    jogo->lista = criaListaPecas();
+    addPecaLista(jogo->lista, 0, 0, 'T');
+    addPecaLista(jogo->lista, 0, 1, 'H');
+    addPecaLista(jogo->lista, 0, 2, 'B');
+    addPecaLista(jogo->lista, 0, 3, 'Q');
+    addPecaLista(jogo->lista, 0, 4, 'K');
+    addPecaLista(jogo->lista, 0, 5, 'B');
+    addPecaLista(jogo->lista, 0, 6, 'H');
+    addPecaLista(jogo->lista, 0, 7, 'T');
+    addPecaLista(jogo->lista, 1, 0, 'P');
+    addPecaLista(jogo->lista, 1, 1, 'P');
+    addPecaLista(jogo->lista, 1, 2, 'P');
+    addPecaLista(jogo->lista, 1, 3, 'P');
+    addPecaLista(jogo->lista, 1, 4, 'P');
+    addPecaLista(jogo->lista, 1, 5, 'P');
+    addPecaLista(jogo->lista, 1, 6, 'P');
+    addPecaLista(jogo->lista, 1, 7, 'P');
+    addPecaLista(jogo->lista, 6, 0, 'p');
+    addPecaLista(jogo->lista, 6, 1, 'p');
+    addPecaLista(jogo->lista, 6, 2, 'p');
+    addPecaLista(jogo->lista, 6, 3, 'p');
+    addPecaLista(jogo->lista, 6, 4, 'p');
+    addPecaLista(jogo->lista, 6, 5, 'p');
+    addPecaLista(jogo->lista, 6, 6, 'p');
+    addPecaLista(jogo->lista, 6, 7, 'p');
+    addPecaLista(jogo->lista, 7, 0, 't');
+    addPecaLista(jogo->lista, 7, 1, 'h');
+    addPecaLista(jogo->lista, 7, 2, 'b');
+    addPecaLista(jogo->lista, 7, 3, 'q');
+    addPecaLista(jogo->lista, 7, 4, 'k');
+    addPecaLista(jogo->lista, 7, 5, 'b');
+    addPecaLista(jogo->lista, 7, 6, 'h');
+    addPecaLista(jogo->lista, 7, 7, 't');
+
+
 
     Peca pecas[32];
     pecas[0] = *criaPeca(0, 0, 'T');
@@ -106,6 +148,10 @@ void display(Jogo *jogo, char *msg)
     #elif __APPPLE__
     CLEAR_MAC();
     #endif
+
+    Peca *ptrProximoNode = jogo->lista->inicio->prox;
+    Peca oProximoNode = *ptrProximoNode;
+    printf("%i", oProximoNode.linha);
 
     #ifdef _WIN32
     printf("\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n\t*%70s\t\t\t\t\t\t\t\t*\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n", jogo->titulo);
