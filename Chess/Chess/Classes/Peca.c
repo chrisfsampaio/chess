@@ -10,7 +10,7 @@
  *  atributos das pecas.                                */
 
 /*         - Incluindo as TADs e Bibliotecas -              *
- *  - Peca.h;                                 *
+ *  - Peca.h;                                               *
  *  - Bibliotecas que seram utilizadas durante as imple-    *
  *  mentacoes.                                              */
 #include <stdio.h>
@@ -178,14 +178,16 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
             if (peca->linha == 1 &&
                 (linha - peca->linha == 1 ||
                 linha - peca->linha == 2) &&
-                coluna == peca->coluna)
+                coluna == peca->coluna &&
+                captura == 0)
             {
                 return 0;
             }
 
             if (peca->linha < 7 &&
                 linha - peca->linha == 1 &&
-                coluna == peca->coluna)
+                coluna == peca->coluna &&
+                captura == 0)
             {
                 return 0;
             }
@@ -202,14 +204,16 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
             if (peca->linha == 6 &&
                 (peca->linha - linha == 1 ||
                  peca->linha - linha == 2) &&
-                coluna == peca->coluna)
+                coluna == peca->coluna &&
+                captura == 0)
             {
                 return 0;
             }
 
             if (peca->linha > 1 &&
                 peca->linha - linha == 1 &&
-                coluna == peca->coluna)
+                coluna == peca->coluna &&
+                captura == 0)
             {
                 return 0;
             }

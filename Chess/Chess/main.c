@@ -21,7 +21,7 @@
 #include "Tabuleiro.h"
 #include "Peca.h"
 
-/*         - Funcoa main() -                              *
+/*         - Funcao main() -                              *
  *  - Verifica se o sistema eh Windows e abre janela do   *
  * jogo do tamanho 150x50 e inicia o jogo. Se verificado  *
  * sistema Apple, inicia o jogo.                          */
