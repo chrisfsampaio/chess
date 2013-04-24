@@ -119,9 +119,9 @@ char lado(Peca *peca)
  *  ro.                                                     *
  *  - Realiza o movimento de cada peca dependendo do simbo- *
  *  lo recebido na funcao.                                  */
-int movePeca(Peca *peca, int linha, int coluna)
+int movePeca(Peca *peca, int linha, int coluna, int captura)
 {
-    if (linha > 7 || coluna > 7)
+    if (linha > 7 || coluna > 7 || linha < 0 || coluna < 0)
     {
         return -1;
     }
@@ -189,6 +189,13 @@ int movePeca(Peca *peca, int linha, int coluna)
             {
                 return 0;
             }
+            
+            if (abs(peca->coluna - coluna) == 1 &&
+                abs(peca->linha - linha) == 1 &&
+                captura == 1)
+            {
+                return 0;
+            }
             break;
 
         case 'p':
@@ -203,6 +210,13 @@ int movePeca(Peca *peca, int linha, int coluna)
             if (peca->linha > 1 &&
                 peca->linha - linha == 1 &&
                 coluna == peca->coluna)
+            {
+                return 0;
+            }
+            
+            if (abs(peca->coluna - coluna) == 1 &&
+                abs(peca->linha - linha) == 1 &&
+                captura == 1)
             {
                 return 0;
             }

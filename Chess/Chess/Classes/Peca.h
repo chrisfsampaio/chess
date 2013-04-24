@@ -28,7 +28,7 @@ typedef struct _peca Peca;
 /*          - Declarando os Headers da funcoes da TAD Peca  */
 Peca *criaPeca(int linha, int coluna, char simbolo);
 Peca *pecaNula();
-int movePeca(Peca *peca, int linha, int coluna);
+int movePeca(Peca *peca, int linha, int coluna, int captura);
 
 /*  Retorna um char que indica o lado da peca     *
  *  P' para pretas, e 'B' para brancas            */
