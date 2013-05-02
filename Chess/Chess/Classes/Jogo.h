@@ -28,7 +28,7 @@
 
 /*  - Definindo o tamanho maximo para armazenar o nome    *
  *  de cada jogador                                       */
-#define kComprimentoNome 25
+#define kComprimentoNome 30
 
 /*         - Definindo a estrutura Jogo -                  *
  *  - Estrutura Jogo armazena o estado atual do jogo em    *

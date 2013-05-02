@@ -26,7 +26,6 @@
 #include "Jogo.h"
 #include "Utilities.h"
 
-
 #ifdef _WIN32
 #define CLEAR_WIN() system("cls");
 #elif __APPPLE__
@@ -35,17 +34,20 @@
 
 /*         - Funcao criaJogo() -                            *
  *  - Cria estrutura do tipo Jogo do tamanho de Jogo        *
- *  - Armazena e mostra na tela o nome de cada jogador e    *
+ *  - Armazena e mostra na tela o nome de cada jogador e    *   
  *  o titulo do jogo;                                       *
  *  - Verifica se os nomes do jogadores sao diferentes;     *
  *  - Cria todas as pecas e armazena no vetor pecas[32];    *
  *  - Cria tabuleiro e coloca as pecas nos lugares;         *
  *  - Inicia o turno das pecas Brancas (Regra do Xadrez).   */
-Jogo *criaJogo()
+Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
+    
+    strcpy(jogo->jogador1, jog1);
+    strcpy(jogo->jogador2, jog2);    
 
-    printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
+    /*printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
     fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
     strtok(jogo->jogador1, "\n");
 
@@ -54,81 +56,78 @@ Jogo *criaJogo()
     fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
     strtok(jogo->jogador2, "\n");
 
-    } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));
+    } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));*/
 
     strcpy(jogo->titulo, "+JOGO DE XADREZ+");
 
     jogo->lista = criaListaPecas();
-    addPecaLista(jogo->lista, 0, 0, 'T');
-    addPecaLista(jogo->lista, 0, 1, 'H');
-    addPecaLista(jogo->lista, 0, 2, 'B');
-    addPecaLista(jogo->lista, 0, 3, 'Q');
-    addPecaLista(jogo->lista, 0, 4, 'K');
-    addPecaLista(jogo->lista, 0, 5, 'B');
-    addPecaLista(jogo->lista, 0, 6, 'H');
-    addPecaLista(jogo->lista, 0, 7, 'T');
-    addPecaLista(jogo->lista, 1, 0, 'P');
-    addPecaLista(jogo->lista, 1, 1, 'P');
-    addPecaLista(jogo->lista, 1, 2, 'P');
-    addPecaLista(jogo->lista, 1, 3, 'P');
-    addPecaLista(jogo->lista, 1, 4, 'P');
-    addPecaLista(jogo->lista, 1, 5, 'P');
-    addPecaLista(jogo->lista, 1, 6, 'P');
-    addPecaLista(jogo->lista, 1, 7, 'P');
-    addPecaLista(jogo->lista, 6, 0, 'p');
-    addPecaLista(jogo->lista, 6, 1, 'p');
-    addPecaLista(jogo->lista, 6, 2, 'p');
-    addPecaLista(jogo->lista, 6, 3, 'p');
-    addPecaLista(jogo->lista, 6, 4, 'p');
-    addPecaLista(jogo->lista, 6, 5, 'p');
-    addPecaLista(jogo->lista, 6, 6, 'p');
-    addPecaLista(jogo->lista, 6, 7, 'p');
-    addPecaLista(jogo->lista, 7, 0, 't');
-    addPecaLista(jogo->lista, 7, 1, 'h');
-    addPecaLista(jogo->lista, 7, 2, 'b');
-    addPecaLista(jogo->lista, 7, 3, 'q');
-    addPecaLista(jogo->lista, 7, 4, 'k');
-    addPecaLista(jogo->lista, 7, 5, 'b');
-    addPecaLista(jogo->lista, 7, 6, 'h');
-    addPecaLista(jogo->lista, 7, 7, 't');
+    addPecaLista(jogo->lista, 0, 0, 't');
+    addPecaLista(jogo->lista, 0, 1, 'h');
+    addPecaLista(jogo->lista, 0, 2, 'b');
+    addPecaLista(jogo->lista, 0, 3, 'q');
+    addPecaLista(jogo->lista, 0, 4, 'k');
+    addPecaLista(jogo->lista, 0, 5, 'b');
+    addPecaLista(jogo->lista, 0, 6, 'h');
+    addPecaLista(jogo->lista, 0, 7, 't');
+    addPecaLista(jogo->lista, 1, 0, 'p');
+    addPecaLista(jogo->lista, 1, 1, 'p');
+    addPecaLista(jogo->lista, 1, 2, 'p');
+    addPecaLista(jogo->lista, 1, 3, 'p');
+    addPecaLista(jogo->lista, 1, 4, 'p');
+    addPecaLista(jogo->lista, 1, 5, 'p');
+    addPecaLista(jogo->lista, 1, 6, 'p');
+    addPecaLista(jogo->lista, 1, 7, 'p');
+    addPecaLista(jogo->lista, 6, 0, 'P');
+    addPecaLista(jogo->lista, 6, 1, 'P');
+    addPecaLista(jogo->lista, 6, 2, 'P');
+    addPecaLista(jogo->lista, 6, 3, 'P');
+    addPecaLista(jogo->lista, 6, 4, 'P');
+    addPecaLista(jogo->lista, 6, 5, 'P');
+    addPecaLista(jogo->lista, 6, 6, 'P');
+    addPecaLista(jogo->lista, 6, 7, 'P');
+    addPecaLista(jogo->lista, 7, 0, 'T');
+    addPecaLista(jogo->lista, 7, 1, 'H');
+    addPecaLista(jogo->lista, 7, 2, 'B');
+    addPecaLista(jogo->lista, 7, 3, 'Q');
+    addPecaLista(jogo->lista, 7, 4, 'K');
+    addPecaLista(jogo->lista, 7, 5, 'B');
+    addPecaLista(jogo->lista, 7, 6, 'H');
+    addPecaLista(jogo->lista, 7, 7, 'T');
 
+    pieces[0] = *criaPeca(0, 0, 'T');
+    pieces[1] = *criaPeca(0, 1, 'H');
+    pieces[2] = *criaPeca(0, 2, 'B');
+    pieces[3] = *criaPeca(0, 3, 'Q');
+    pieces[4] = *criaPeca(0, 4, 'K');
+    pieces[5] = *criaPeca(0, 5, 'B');
+    pieces[6] = *criaPeca(0, 6, 'H');
+    pieces[7] = *criaPeca(0, 7, 'T');
+    pieces[8] = *criaPeca(1, 0, 'P');
+    pieces[9] = *criaPeca(1, 1, 'P');
+    pieces[10] = *criaPeca(1, 2, 'P');
+    pieces[11] = *criaPeca(1, 3, 'P');
+    pieces[12] = *criaPeca(1, 4, 'P');
+    pieces[13] = *criaPeca(1, 5, 'P');
+    pieces[14] = *criaPeca(1, 6, 'P');
+    pieces[15] = *criaPeca(1, 7, 'P');
+    pieces[16] = *criaPeca(6, 0, 'p');
+    pieces[17] = *criaPeca(6, 1, 'p');
+    pieces[18] = *criaPeca(6, 2, 'p');
+    pieces[19] = *criaPeca(6, 3, 'p');
+    pieces[20] = *criaPeca(6, 4, 'p');
+    pieces[21] = *criaPeca(6, 5, 'p');
+    pieces[22] = *criaPeca(6, 6, 'p');
+    pieces[23] = *criaPeca(6, 7, 'p');
+    pieces[24] = *criaPeca(7, 0, 't');
+    pieces[25] = *criaPeca(7, 1, 'h');
+    pieces[26] = *criaPeca(7, 2, 'b');
+    pieces[27] = *criaPeca(7, 3, 'q');
+    pieces[28] = *criaPeca(7, 4, 'k');
+    pieces[29] = *criaPeca(7, 5, 'b');
+    pieces[30] = *criaPeca(7, 6, 'h');
+    pieces[31] = *criaPeca(7, 7, 't');
 
-
-    Peca pecas[32];
-    pecas[0] = *criaPeca(0, 0, 'T');
-    pecas[1] = *criaPeca(0, 1, 'H');
-    pecas[2] = *criaPeca(0, 2, 'B');
-    pecas[3] = *criaPeca(0, 3, 'Q');
-    pecas[4] = *criaPeca(0, 4, 'K');
-    pecas[5] = *criaPeca(0, 5, 'B');
-    pecas[6] = *criaPeca(0, 6, 'H');
-    pecas[7] = *criaPeca(0, 7, 'T');
-    pecas[8] = *criaPeca(1, 0, 'P');
-    pecas[9] = *criaPeca(1, 1, 'P');
-    pecas[10] = *criaPeca(1, 2, 'P');
-    pecas[11] = *criaPeca(1, 3, 'P');
-    pecas[12] = *criaPeca(1, 4, 'P');
-    pecas[13] = *criaPeca(1, 5, 'P');
-    pecas[14] = *criaPeca(1, 6, 'P');
-    pecas[15] = *criaPeca(1, 7, 'P');
-    pecas[16] = *criaPeca(6, 0, 'p');
-    pecas[17] = *criaPeca(6, 1, 'p');
-    pecas[18] = *criaPeca(6, 2, 'p');
-    pecas[19] = *criaPeca(6, 3, 'p');
-    pecas[20] = *criaPeca(6, 4, 'p');
-    pecas[21] = *criaPeca(6, 5, 'p');
-    pecas[22] = *criaPeca(6, 6, 'p');
-    pecas[23] = *criaPeca(6, 7, 'p');
-    pecas[24] = *criaPeca(7, 0, 't');
-    pecas[25] = *criaPeca(7, 1, 'h');
-    pecas[26] = *criaPeca(7, 2, 'b');
-    pecas[27] = *criaPeca(7, 3, 'q');
-    pecas[28] = *criaPeca(7, 4, 'k');
-    pecas[29] = *criaPeca(7, 5, 'b');
-    pecas[30] = *criaPeca(7, 6, 'h');
-    pecas[31] = *criaPeca(7, 7, 't');
-
-    Tabuleiro *tabuleiro = criaTabuleiro(pecas, 32);
+    Tabuleiro *tabuleiro = criaTabuleiro(pieces, 32);
     jogo->tabuleiro = tabuleiro;
     jogo->turno = 'B';
 
@@ -149,9 +148,9 @@ void display(Jogo *jogo, char *msg)
     CLEAR_MAC();
     #endif
 
-    Peca *ptrProximoNode = jogo->lista->inicio->prox;
+    /*Peca *ptrProximoNode = jogo->lista->inicio->prox;
     Peca oProximoNode = *ptrProximoNode;
-    printf("%i", oProximoNode.linha);
+    printf("%i", oProximoNode.linha);*/
 
     #ifdef _WIN32
     printf("\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n\t*%70s\t\t\t\t\t\t\t\t*\n\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\t*\n", jogo->titulo);
@@ -180,7 +179,7 @@ void display(Jogo *jogo, char *msg)
         {
             printf("\t\t|");
         }
-        printf("\n%d\t|",i + 1);
+        printf("\n%d\t|",(9-(i + 1)));
         for (int j = 0; j < 8; j++)
         {
             Peca peca = jogo->tabuleiro->pecas[i][j];
@@ -194,7 +193,7 @@ void display(Jogo *jogo, char *msg)
                 printf("\t%c\t|",simbolo);
             }
         }
-        printf("\t%d\n\t|",i + 1);
+        printf("\t%d\n\t|",(9-(i + 1)));
         for (int j = 0; j < 8; j++)
         {
             printf("\t\t|");
@@ -236,18 +235,19 @@ void executaJogada(Jogo *jogo)
 {
     char jogada[6];
     char msgJogador[100];
-    jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador1) : strcpy(msgJogador, jogo->jogador2);
-    strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b)\n");
+    jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador2) : strcpy(msgJogador, jogo->jogador1);
+    jogo->turno == 'B' ? strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Brancas (minusculas)\n")   :
+    strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Pretas (maiusculas)\n");    
     printf("%s",msgJogador);
-
+    
     fgets(jogada, sizeof(jogada), stdin);
     flush_in();
     fflush(stdin);
 
-    int linhaOrigem = ((int)jogada[0] - '0') - 1;
+    int linhaOrigem = (7-(((int)jogada[0] - '0') - 1));
     int colunaOrigem = letraParaNumero(jogada[1]);
 
-    int linhaDestino = ((int)jogada[3] - '0') - 1;
+    int linhaDestino = (7-(((int)jogada[3] - '0') - 1));
     int colunaDestino = letraParaNumero(jogada[4]);
 
     int jogadaOk = 0;

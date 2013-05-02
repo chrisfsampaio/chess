@@ -26,6 +26,8 @@
 #include "Jogo.h"
 #include "Tabuleiro.h"
 #include "Peca.h"
+#define kComprimentoNome 30
+
 
 /*         - Funcao main() -                              *
  *  - Verifica se o sistema eh Windows e abre janela do   *
@@ -33,12 +35,36 @@
  * sistema Apple, inicia o jogo.                          */
 int main(int argc, const char * argv[])
 {
+    char jogador1[kComprimentoNome];
+    char jogador2[kComprimentoNome];
+    Peca _pieces[32];
+
     #ifdef _WIN32
     system("mode 150, 50");
-    Jogo *novoJogo = criaJogo();
-    display(novoJogo, "");
+    printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
+    fgets(jogador1, sizeof(jogador1), stdin);
+    strtok(jogador1, "\n");
+    
+    do{
+        printf("Digite o nome do Jogador 2\n#ATENCAO# Deve conter pelo menos um caracter\n");
+        fgets(jogador2, sizeof(jogador2), stdin);
+        strtok(jogador2, "\n");
+    } while ((strcmp(jogador1, jogador2) == 0));
+    
+    Jogo *novoJogo = criaJogo(jogador1, jogador2);    display(novoJogo, "");
+    
     #elif __APPLE__
-    Jogo *novoJogo = criaJogo();
+    printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
+    fgets(jogador1, sizeof(jogador1), stdin);
+    strtok(jogador1, "\n");
+    
+    do{
+    printf("Digite o nome do Jogador 2\n#ATENCAO# Deve conter pelo menos um caracter\n");
+    fgets(jogador2, sizeof(jogador2), stdin);
+    strtok(jogador2, "\n");
+    } while ((strcmp(jogador1, jogador2) == 0));
+    
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
     display(novoJogo, "");
     #endif
     return 0;

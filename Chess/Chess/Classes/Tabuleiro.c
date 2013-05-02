@@ -31,7 +31,7 @@
  *  - Preenche o lado de cada time com suas respectivas     *
  *  pecas;                                                  *
  *  - Retorna tabuleiro completo.                           */
-Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas)
+Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
 {
     Tabuleiro *tabuleiro = (Tabuleiro *)malloc(sizeof(Tabuleiro));
     for (int i = 0; i < 8; i++)

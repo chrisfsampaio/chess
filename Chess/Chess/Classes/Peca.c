@@ -99,7 +99,7 @@ Peca *pecaNula()
  *  - Recebe a estrutura peca do tipo Peca.             *
  *  - Verifica se os simbolos sao caracteres minusculos *
  *  e retorna o simbolo P (pecas pretas). Se for        *
- *  simbolo 'x', retorna o caractere X, se nao retonra  *
+ *  simbolo 'x', retorna o caractere X, se nao retorna  *
  *  o caractere B (pecas brancas).                      */
 char lado(Peca *peca)
 {
@@ -110,13 +110,13 @@ char lado(Peca *peca)
         peca->simbolo == 'k' ||
         peca->simbolo == 'p')
     {
-        return 'P';
+        return 'B';
     }
     else if (peca->simbolo == 'x')
     {
         return 'X';
     }
-    return 'B';
+    return 'P';
 }
 
 /*         - Funcao movePeca() -                            *
