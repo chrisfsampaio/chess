@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <regex.h>
 #include "Jogo.h"
 #include "Utilities.h"
 
@@ -224,12 +225,13 @@ void executaJogada(Jogo *jogo)
 {
     char jogada[6];
     char msgJogador[100];
+    do{
     jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador2) : strcpy(msgJogador, jogo->jogador1);
     jogo->turno == 'B' ? strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Brancas (minusculas)\n")   :
     strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Pretas (maiusculas)\n");    
-    printf("%s",msgJogador);
-    
+    printf("%s",msgJogador);    
     fgets(jogada, sizeof(jogada), stdin);
+    } while (jogada[0] == '\n' || strlen(jogada) < 1);
     flush_in();
     fflush(stdin);
     

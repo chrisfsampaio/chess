@@ -23,7 +23,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <regex.h>
 #include "Jogo.h"
 #include "Tabuleiro.h"
 #include "Peca.h"
@@ -38,27 +37,19 @@ int main(int argc, const char * argv[])
     char jogador2[kComprimentoNome];
     Peca _pieces[32];
     
-    regex_t regex;
-    int reti;
-    
-    /* Compila expressao regular */
-    reti = regcomp(&regex, "^[[:alnum:]]", 0);
-    
     #ifdef _WIN32
     system("mode 150, 50");
     do{
         printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter Alfa-numerico:\n");
         fgets(jogador1, sizeof(jogador1), stdin);
         strtok(jogador1, "\n");
-        reti = regexec(&regex, jogador1, 0, NULL, 0);
-    } while (reti == REG_NOMATCH);
+    } while (jogador1[0] == '\n' || strlen(jogador1) < 1);
     
     do{
         printf("Digite o nome do Jogador 2\n#ATENCAO# Deve conter pelo menos um caracter Alfa-numerico:\n");
         fgets(jogador2, sizeof(jogador2), stdin);
         strtok(jogador2, "\n");
-    } while (reti == REG_NOMATCH);
-    
+    } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
     Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
     display(novoJogo, "");
     
@@ -67,15 +58,13 @@ int main(int argc, const char * argv[])
     printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter Alfa-numerico:\n");
     fgets(jogador1, sizeof(jogador1), stdin);
     strtok(jogador1, "\n");
-    reti = regexec(&regex, jogador1, 0, NULL, 0);
-    } while (reti == REG_NOMATCH);
+    } while (jogador1[0] == '\n' || strlen(jogador1) < 1);
     
     do{
     printf("Digite o nome do Jogador 2\n#ATENCAO# Deve conter pelo menos um caracter Alfa-numerico:\n");
     fgets(jogador2, sizeof(jogador2), stdin);
     strtok(jogador2, "\n");
-    reti = regexec(&regex, jogador2, 0, NULL, 0);
-    } while (reti == REG_NOMATCH);
+    } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
     
     Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
     display(novoJogo, "");
