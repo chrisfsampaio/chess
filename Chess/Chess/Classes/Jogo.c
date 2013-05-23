@@ -47,17 +47,6 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
     strcpy(jogo->jogador1, jog1);
     strcpy(jogo->jogador2, jog2);    
 
-    /*printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter\n");
-    fgets(jogo->jogador1, sizeof(jogo->jogador1), stdin);
-    strtok(jogo->jogador1, "\n");
-
-    do{
-    printf("Digite o nome do Jogador 2\n#ATENCAO# Deve ser diferente do Jogador 1 e conter pelo menos um caracter\n");
-    fgets(jogo->jogador2, sizeof(jogo->jogador2), stdin);
-    strtok(jogo->jogador2, "\n");
-
-    } while ((strcmp(jogo->jogador1, jogo->jogador2) == 0));*/
-
     strcpy(jogo->titulo, "+JOGO DE XADREZ+");
 
     jogo->lista = criaListaPecas();
@@ -243,7 +232,7 @@ void executaJogada(Jogo *jogo)
     fgets(jogada, sizeof(jogada), stdin);
     flush_in();
     fflush(stdin);
-
+    
     int linhaOrigem = (7-(((int)jogada[0] - '0') - 1));
     int colunaOrigem = letraParaNumero(jogada[1]);
 
