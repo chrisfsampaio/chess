@@ -36,7 +36,7 @@ Done	-	b. Seria bom, além dos nomes dos jogadores, indicar a cor da peça da ve
 Coordenada de origem inválida. Isso me fez perder algum tempo, achando que estava digitando errado, ou que o
 programa não reconhecia minúsculas, etc.
 
-8. (IMPORTANTE) uma entrada incorreta na interface faz o programa capotar.
+8. Done	-	(IMPORTANTE) uma entrada incorreta na interface faz o programa capotar.
 
 IMPORTANTE: não se impressionem com a quantidade de comentários. O projeto está bom e o funcionamento do programa
 atende aos requisitos. Entretanto, sugiro fortemente que o grupo aplique as alterações sugeridas.
