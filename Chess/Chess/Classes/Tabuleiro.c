@@ -43,8 +43,8 @@ Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
     }
     for (int i = 0; i < numeroDePecas; i++)
     {
-        Peca peca = pecas[i];
-        tabuleiro->pecas[peca.linha][peca.coluna] = &peca;
+        Peca *peca = &pecas[i];
+        tabuleiro->pecas[peca->linha][peca->coluna] = peca;
     }
 
     return tabuleiro;
