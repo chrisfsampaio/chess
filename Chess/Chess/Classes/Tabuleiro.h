@@ -21,6 +21,7 @@
 /*         - Incluindo as TADs -    *
  *  - Peca.h                        */
 #include "Peca.h"
+#include "ListaPeca.h"
 
 /*         - Definindo a estrutura Tabuleiro -             *
  *  - Estrutura Tabuleiro armazena todas as informacoes    *
@@ -28,8 +29,8 @@
  *  mentos.                                                */
 struct _tabuleiro
 {
-    Peca pecas[8][8];
-    ListaPecas *lista;
+    Peca *pecas[8][8];
+    ListaPeca *lista;
 };
 
 typedef struct _tabuleiro Tabuleiro;

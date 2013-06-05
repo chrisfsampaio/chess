@@ -38,13 +38,13 @@ Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
     {
         for (int j = 0; j < 8; j++)
         {
-            tabuleiro->pecas[i][j] = *pecaNula();
+            tabuleiro->pecas[i][j] = NULL;
         }
     }
     for (int i = 0; i < numeroDePecas; i++)
     {
         Peca peca = pecas[i];
-        tabuleiro->pecas[peca.linha][peca.coluna] = peca;
+        tabuleiro->pecas[peca.linha][peca.coluna] = &peca;
     }
 
     return tabuleiro;
@@ -60,9 +60,9 @@ Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
     if (linha > 7 || coluna > 7 || linha < 0 || coluna < 0)
     {
         printf("Coordenada invalida!");
-        return pecaNula();
+        return NULL;
     }
-    return &tabuleiro->pecas[linha][coluna];
+    return tabuleiro->pecas[linha][coluna];
 }
 
 /*         - Funcao setCasa() -                             *
@@ -76,10 +76,10 @@ Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
     {
         return NULL;
     }
-    tabuleiro->pecas[peca->linha][peca->coluna] = *pecaNula();
-    tabuleiro->pecas[linha][coluna] = *peca;
-    tabuleiro->pecas[linha][coluna].linha = linha;
-    tabuleiro->pecas[linha][coluna].coluna = coluna;
+    tabuleiro->pecas[peca->linha][peca->coluna] = NULL;
+    tabuleiro->pecas[linha][coluna] = peca;
+    tabuleiro->pecas[linha][coluna]->linha = linha;
+    tabuleiro->pecas[linha][coluna]->coluna = coluna;
 
     Peca *pecaRetorno = &pecaDestino;
     return pecaRetorno;
@@ -98,8 +98,8 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
         {
             int nextX = colunaOrigem + i * dirX;
             int nextY = linhaOrigem + i * dirY;
-            Peca *pecaCaminho = &tabuleiro->pecas[nextY][nextX];
-            if (pecaCaminho->simbolo != 'x')
+            Peca *pecaCaminho = tabuleiro->pecas[nextY][nextX];
+            if (pecaCaminho != NULL)
             {
                 return 1;
             }
@@ -130,8 +130,8 @@ int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna)
         {
             int nextX = colunaOrigem + i * dirX;
             int nextY = linhaOrigem + i * dirY;
-            Peca *pecaCaminho = &tabuleiro->pecas[nextY][nextX];
-            if (pecaCaminho->simbolo != 'x')
+            Peca *pecaCaminho = tabuleiro->pecas[nextY][nextX];
+            if (pecaCaminho != NULL)
             {
                 return 1;
             }

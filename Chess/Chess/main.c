@@ -32,7 +32,7 @@
  * jogo do tamanho 150x50 e inicia o jogo. Se verificado  *
  * sistema Apple, inicia o jogo.                          */
 int main(int argc, const char * argv[])
-{
+{    
     char jogador1[kComprimentoNome];
     char jogador2[kComprimentoNome];
     Peca _pieces[32];

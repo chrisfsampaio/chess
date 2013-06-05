@@ -87,13 +87,13 @@ Peca *criaPeca(int linha, int coluna, char simbolo)
  *  de Peca.                                                *
  *  - Atribui a letra x para variavel peca->simbolo e       *
  *  retorna a estrutura peca.                               */
-Peca *pecaNula()
-{
-    Peca *peca = (Peca *)malloc(sizeof(Peca));
-    peca->simbolo = 'x';
-    strcpy(peca->nome, "x");
-    return peca;
-}
+//Peca *pecaNula()
+//{
+//    Peca *peca = (Peca *)malloc(sizeof(Peca));
+//    peca->simbolo = 'x';
+//    strcpy(peca->nome, "x");
+//    return peca;
+//}
 
 /*         - Funcao lado() -                            *
  *  - Recebe a estrutura peca do tipo Peca.             *
@@ -103,18 +103,18 @@ Peca *pecaNula()
  *  o caractere B (pecas brancas).                      */
 char lado(Peca *peca)
 {
-    if (peca->simbolo == 't' ||
-        peca->simbolo == 'h' ||
-        peca->simbolo == 'b' ||
-        peca->simbolo == 'q' ||
-        peca->simbolo == 'k' ||
-        peca->simbolo == 'p')
-    {
-        return 'B';
-    }
-    else if (peca->simbolo == 'x')
+    if (peca == NULL)
     {
         return 'X';
+    }
+    else if (peca->simbolo == 't' ||
+            peca->simbolo == 'h' ||
+            peca->simbolo == 'b' ||
+            peca->simbolo == 'q' ||
+            peca->simbolo == 'k' ||
+            peca->simbolo == 'p')
+    {
+        return 'B';
     }
     return 'P';
 }
@@ -240,69 +240,6 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
 }
 
 
-/*          - Funcao: criaListaPecas -                              *
- * Descricao: inicia a lista de pecas                               *
- * Retorno: ListaPecas lista - ponteiro para a lista de pecas criada*/
-ListaPecas* criaListaPecas()
-{
-   ListaPecas *lista = (ListaPecas *)malloc(sizeof(ListaPecas));
-   lista->inicio = NULL;
-   return lista;
-}
-
-
-/*          - Funcao: addPecaLista -                            *
- * Descricao: adiciona uma nova peca na lista de pecas.         *
- * Parametros:                                                  *
- *  1. ListaPecas *lista - ponteiro para a lista de pecas       *
- *  2. int linha - numero da linha da peca                      *
- *  3. int coluna - numero da coluna da peca                    *
- *  4. char simbolo - o simbolo representativo da pecas         *
- * Retorno: int status - codigo da operacao efetuada            */
-int addPecaLista(ListaPecas *lista, int linha, int coluna, char simbolo)
-{
-
-    int status = 1;
-
-    // Verifica se a lista de pecas foi criada
-    if(lista != NULL)
-    {
-
-       // Aloca memoria para nova peca
-       Peca *novoNoPeca = (Peca *)malloc(sizeof(Peca));
-
-       // Testa se o a memoria para a nova peca foi alocada
-       if(novoNoPeca != NULL)
-       {
-
-            novoNoPeca->coluna = coluna;
-            novoNoPeca->linha = linha;
-            novoNoPeca->simbolo = simbolo;
-            novoNoPeca->capturada = 0;
-            novoNoPeca->prox = NULL;
-
-           // Verifica se a lista esta vazia
-           if (lista->inicio == NULL) {
-              novoNoPeca->prox = NULL;
-           } else {
-              novoNoPeca->prox = lista->inicio;
-           }
-           lista->inicio = novoNoPeca;
-
-       }
-       else
-       {
-           status = -2;
-       }
-
-    }
-    else
-    {
-        status = -3;
-    }
-
-    return status;
-}
 
 
 /*

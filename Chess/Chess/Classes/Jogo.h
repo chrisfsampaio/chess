@@ -25,6 +25,7 @@
  *  - Tablueiro.h e Peca.h          */
 #include "Tabuleiro.h"
 #include "Peca.h"
+#include "ListaPeca.h"
 
 /*  - Definindo o tamanho maximo para armazenar o nome    *
  *  de cada jogador                                       */
@@ -42,7 +43,7 @@ struct _jogo
     char titulo[(kComprimentoNome * 2) + 3];
     Tabuleiro *tabuleiro;
     Peca *pecas;
-    ListaPecas *lista;
+    ListaPeca *lista;
     char turno;
 };
 

@@ -29,25 +29,15 @@ struct _peca
     int linha;
     int coluna;
     int capturada; // 0=Nao 1=Sim
-    struct _peca *prox;
+//    struct _peca *prox;
 };
 typedef struct _peca Peca;
 
 
-/* Estrutura header para a lista de pecas */
-struct _listaPecas
-{
-    Peca *inicio;
-};
-typedef struct _listaPecas ListaPecas;
-
-
 /*          - Declarando os Headers da funcoes da TAD Peca  */
 Peca *criaPeca(int linha, int coluna, char simbolo);
-Peca *pecaNula();
+//Peca *pecaNula();
 int movePeca(Peca *peca, int linha, int coluna, int captura);
-ListaPecas* criaListaPecas();
-int addPecaLista(ListaPecas *lista, int linha, int coluna, char simbolo);
 
 
 /*  Retorna um char que indica o lado da peca     *

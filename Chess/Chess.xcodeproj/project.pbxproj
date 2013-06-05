@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AA344EA117063C0D00814047 /* Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AA344EA017063C0D00814047 /* Utilities.c */; };
+		AABAED45175EE21B0074CC2F /* Node.c in Sources */ = {isa = PBXBuildFile; fileRef = AABAED44175EE21B0074CC2F /* Node.c */; };
+		AABAED47175EE3220074CC2F /* ListaPeca.c in Sources */ = {isa = PBXBuildFile; fileRef = AABAED46175EE3220074CC2F /* ListaPeca.c */; };
 		AACD769A17012BDC0083C4AF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AACD769917012BDC0083C4AF /* main.c */; };
 		AACD769C17012BDC0083C4AF /* Chess.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = AACD769B17012BDC0083C4AF /* Chess.1 */; };
 		AACD76AC17012DC00083C4AF /* Jogo.c in Sources */ = {isa = PBXBuildFile; fileRef = AACD76AB17012DC00083C4AF /* Jogo.c */; };
@@ -31,6 +33,10 @@
 /* Begin PBXFileReference section */
 		AA344E9F17063C0100814047 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
 		AA344EA017063C0D00814047 /* Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Utilities.c; path = Classes/Utilities.c; sourceTree = "<group>"; };
+		AABAED40175EE0610074CC2F /* ListaPeca.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListaPeca.h; path = Classes/ListaPeca.h; sourceTree = "<group>"; };
+		AABAED43175EE20F0074CC2F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Node.h; path = Classes/Node.h; sourceTree = "<group>"; };
+		AABAED44175EE21B0074CC2F /* Node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Node.c; path = Classes/Node.c; sourceTree = "<group>"; };
+		AABAED46175EE3220074CC2F /* ListaPeca.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ListaPeca.c; path = Classes/ListaPeca.c; sourceTree = "<group>"; };
 		AACD769517012BDC0083C4AF /* Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Chess; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACD769917012BDC0083C4AF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		AACD769B17012BDC0083C4AF /* Chess.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Chess.1; sourceTree = "<group>"; };
@@ -60,6 +66,17 @@
 				AA344EA017063C0D00814047 /* Utilities.c */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		AABAED3F175EE0480074CC2F /* Lista */ = {
+			isa = PBXGroup;
+			children = (
+				AABAED40175EE0610074CC2F /* ListaPeca.h */,
+				AABAED46175EE3220074CC2F /* ListaPeca.c */,
+				AABAED43175EE20F0074CC2F /* Node.h */,
+				AABAED44175EE21B0074CC2F /* Node.c */,
+			);
+			name = Lista;
 			sourceTree = "<group>";
 		};
 		AACD768A17012BDC0083C4AF = {
@@ -112,6 +129,7 @@
 		AACD76A917012D730083C4AF /* Peca */ = {
 			isa = PBXGroup;
 			children = (
+				AABAED3F175EE0480074CC2F /* Lista */,
 				AACD76B117012DE20083C4AF /* Peca.h */,
 				AACD76AF17012DD80083C4AF /* Peca.c */,
 			);
@@ -174,6 +192,8 @@
 				AACD76AE17012DCB0083C4AF /* Tabuleiro.c in Sources */,
 				AACD76B017012DD80083C4AF /* Peca.c in Sources */,
 				AA344EA117063C0D00814047 /* Utilities.c in Sources */,
+				AABAED45175EE21B0074CC2F /* Node.c in Sources */,
+				AABAED47175EE3220074CC2F /* ListaPeca.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
