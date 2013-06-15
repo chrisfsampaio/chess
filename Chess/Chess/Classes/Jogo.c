@@ -236,7 +236,7 @@ void executaJogada(Jogo *jogo)
             if (peca->simbolo == 'h' || peca->simbolo == 'H' || pecaNoCaminho == 0)
             {
                 Peca *pecaRetorno = setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, peca);
-                if (pecaRetorno == 0)
+                if ((int)pecaRetorno == -1)
                 {
                     strcat(msg, "Jogada invalida, existe uma peca sua no destino");
                 }

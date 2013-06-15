@@ -71,17 +71,17 @@ Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna)
  *  -   */
 Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
 {
-    Peca pecaDestino = *getCasa(tabuleiro, linha, coluna);
-    if (lado(peca) == lado(&pecaDestino))
+    Peca *pecaDestino = getCasa(tabuleiro, linha, coluna);
+    if (lado(peca) == lado(pecaDestino))
     {
-        return NULL;
+        return -1;
     }
     tabuleiro->pecas[peca->linha][peca->coluna] = NULL;
     tabuleiro->pecas[linha][coluna] = peca;
     tabuleiro->pecas[linha][coluna]->linha = linha;
     tabuleiro->pecas[linha][coluna]->coluna = coluna;
 
-    Peca *pecaRetorno = &pecaDestino;
+    Peca *pecaRetorno = pecaDestino;
     return pecaRetorno;
 }
 
