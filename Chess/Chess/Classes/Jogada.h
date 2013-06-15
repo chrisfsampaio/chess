@@ -18,11 +18,14 @@ struct _jogada
     Peca *pecaCapturada;
     Coordenada Origem;
     Coordenada Destino;
-    double  tempoJogada;
+    long startTimestamp;
+    long endTimestamp;
 };
 typedef struct _jogada Jogada;
 
 Jogada *criaJogada();
-
+void comecaTempo(Jogada *jogada);
+void finalizaTempo(Jogada *jogada);
+double tempoJogada(Jogada *jogada);
 
 #endif
