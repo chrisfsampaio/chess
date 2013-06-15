@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "Peca.h"
 
 /*         - Funcao criaPeca() -                            *
@@ -48,23 +49,23 @@ Peca *criaPeca(int linha, int coluna, char simbolo, int pecaID)
     {
         strcpy(peca->nome, "Torre");
     }
-    else if (peca->simbolo == 'h' || peca->simbolo == 'H')
+    else if (toupper(peca->simbolo) == 'H')
     {
         strcpy(peca->nome, "Cavalo");
     }
-    else if (peca->simbolo == 'b' || peca->simbolo == 'B')
+    else if (toupper(peca->simbolo) == 'B')
     {
         strcpy(peca->nome, "Bispo");
     }
-    else if (peca->simbolo == 'q' || peca->simbolo == 'Q')
+    else if (toupper(peca->simbolo) == 'Q')
     {
         strcpy(peca->nome, "Rainha");
     }
-    else if (peca->simbolo == 'k' || peca->simbolo == 'K')
+    else if (toupper(peca->simbolo) == 'K')
     {
         strcpy(peca->nome, "Rei");
     }
-    else if (peca->simbolo == 'p' || peca->simbolo == 'P')
+    else if (toupper(peca->simbolo) == 'P')
     {
         strcpy(peca->nome, "Peao");
     }

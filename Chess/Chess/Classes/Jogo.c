@@ -248,11 +248,12 @@ void executaJogada(Jogo *jogo)
                 }
                 else
                 {
-                    display(jogo, "Confirmar jogada? S = Sim, N = Nao\n", 0);
+                    display(jogo, "Confirmar jogada? S = Sim, N = Nao", 0);
                     char confirma = 'A';
                     while (toupper(confirma) != 'N' && toupper(confirma) != 'S')
                     {
                         confirma = fgetc(stdin);
+                        getchar();
                     }
                     confirma = toupper(confirma);
                     if (confirma == 'N')
