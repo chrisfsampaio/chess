@@ -18,6 +18,14 @@
 #ifndef Chess_Utilities_h
 #define Chess_Utilities_h
 
+
+struct _coordenada
+{
+    int linha;
+    int coluna;    
+};
+typedef struct _coordenada Coordenada;
+
 /*          - Declarando os Headers da funcoes da TAD Utilities  */
 int letraParaNumero(char letra);
 char numeroParaLetra(int numero);

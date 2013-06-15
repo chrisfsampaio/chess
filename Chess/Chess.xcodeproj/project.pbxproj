@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2720F756176CF1F300404BF1 /* Jogada.c in Sources */ = {isa = PBXBuildFile; fileRef = 2720F755176CF1F300404BF1 /* Jogada.c */; };
+		2720F759176CF38700404BF1 /* PilhaJogada.c in Sources */ = {isa = PBXBuildFile; fileRef = 2720F758176CF38700404BF1 /* PilhaJogada.c */; };
+		2720F762176CF72D00404BF1 /* NodePilhaJogada.c in Sources */ = {isa = PBXBuildFile; fileRef = 2720F761176CF72D00404BF1 /* NodePilhaJogada.c */; };
 		AA344EA117063C0D00814047 /* Utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = AA344EA017063C0D00814047 /* Utilities.c */; };
 		AABAED45175EE21B0074CC2F /* Node.c in Sources */ = {isa = PBXBuildFile; fileRef = AABAED44175EE21B0074CC2F /* Node.c */; };
 		AABAED47175EE3220074CC2F /* ListaPeca.c in Sources */ = {isa = PBXBuildFile; fileRef = AABAED46175EE3220074CC2F /* ListaPeca.c */; };
@@ -31,6 +34,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2720F754176CF1E300404BF1 /* Jogada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Jogada.h; path = Classes/Jogada.h; sourceTree = "<group>"; };
+		2720F755176CF1F300404BF1 /* Jogada.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Jogada.c; path = Classes/Jogada.c; sourceTree = "<group>"; };
+		2720F758176CF38700404BF1 /* PilhaJogada.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = PilhaJogada.c; path = Classes/PilhaJogada.c; sourceTree = "<group>"; };
+		2720F75A176CF39200404BF1 /* PilhaJogada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PilhaJogada.h; path = Classes/PilhaJogada.h; sourceTree = "<group>"; };
+		2720F761176CF72D00404BF1 /* NodePilhaJogada.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = NodePilhaJogada.c; path = Classes/NodePilhaJogada.c; sourceTree = "<group>"; };
+		2720F763176CF74100404BF1 /* NodePilhaJogada.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NodePilhaJogada.h; path = Classes/NodePilhaJogada.h; sourceTree = "<group>"; };
 		AA344E9F17063C0100814047 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = Classes/Utilities.h; sourceTree = "<group>"; };
 		AA344EA017063C0D00814047 /* Utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Utilities.c; path = Classes/Utilities.c; sourceTree = "<group>"; };
 		AABAED40175EE0610074CC2F /* ListaPeca.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListaPeca.h; path = Classes/ListaPeca.h; sourceTree = "<group>"; };
@@ -59,6 +68,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2720F757176CF36C00404BF1 /* PilhaJogada */ = {
+			isa = PBXGroup;
+			children = (
+				2720F75A176CF39200404BF1 /* PilhaJogada.h */,
+				2720F758176CF38700404BF1 /* PilhaJogada.c */,
+				2720F763176CF74100404BF1 /* NodePilhaJogada.h */,
+				2720F761176CF72D00404BF1 /* NodePilhaJogada.c */,
+			);
+			name = PilhaJogada;
+			sourceTree = "<group>";
+		};
+		2761911F176CF0B600392199 /* Jogada */ = {
+			isa = PBXGroup;
+			children = (
+				2720F754176CF1E300404BF1 /* Jogada.h */,
+				2720F755176CF1F300404BF1 /* Jogada.c */,
+			);
+			name = Jogada;
+			sourceTree = "<group>";
+		};
 		AA344E9E17063BE500814047 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +127,8 @@
 		AACD769817012BDC0083C4AF /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				2720F757176CF36C00404BF1 /* PilhaJogada */,
+				2761911F176CF0B600392199 /* Jogada */,
 				AA344E9E17063BE500814047 /* Utilities */,
 				AACD76A217012CE90083C4AF /* Jogo */,
 				AACD76A817012D5B0083C4AF /* Tabuleiro */,
@@ -194,6 +225,9 @@
 				AA344EA117063C0D00814047 /* Utilities.c in Sources */,
 				AABAED45175EE21B0074CC2F /* Node.c in Sources */,
 				AABAED47175EE3220074CC2F /* ListaPeca.c in Sources */,
+				2720F756176CF1F300404BF1 /* Jogada.c in Sources */,
+				2720F759176CF38700404BF1 /* PilhaJogada.c in Sources */,
+				2720F762176CF72D00404BF1 /* NodePilhaJogada.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

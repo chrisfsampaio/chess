@@ -29,6 +29,7 @@ struct _peca
     int linha;
     int coluna;
     int capturada; // 0=Nao 1=Sim
+    int id;
 //    struct _peca *prox;
 };
 typedef struct _peca Peca;
