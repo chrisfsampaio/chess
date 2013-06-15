@@ -29,14 +29,14 @@ struct _peca
     int linha;
     int coluna;
     int capturada; // 0=Nao 1=Sim
-    int id;
+    int pecaID;
 //    struct _peca *prox;
 };
 typedef struct _peca Peca;
 
 
 /*          - Declarando os Headers da funcoes da TAD Peca  */
-Peca *criaPeca(int linha, int coluna, char simbolo);
+Peca *criaPeca(int linha, int coluna, char simbolo, int pecaID);
 //Peca *pecaNula();
 int movePeca(Peca *peca, int linha, int coluna, int captura);
 

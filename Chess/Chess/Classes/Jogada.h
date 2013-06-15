@@ -16,8 +16,8 @@ struct _jogada
 {
     Peca *pecaMovida;
     Peca *pecaCapturada;
-    Coordenada Origem;
-    Coordenada Destino;
+    Coordenada origem;
+    Coordenada destino;
     long startTimestamp;
     long endTimestamp;
 };

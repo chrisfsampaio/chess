@@ -21,6 +21,7 @@
  *  mentacoes.                                              */
 #include <stdio.h>
 #include "Utilities.h"
+#include <time.h>
 
 /*         - Funcao letraParaNumero() -                     *
  *  - Cria funcao que converter letras para numeros que sao *
@@ -143,6 +144,12 @@ void flush_in()
 
     }
 }
+
+long timeNow()
+{
+    return time(NULL);
+}
+
 
 
 

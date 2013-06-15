@@ -30,5 +30,6 @@ typedef struct _coordenada Coordenada;
 int letraParaNumero(char letra);
 char numeroParaLetra(int numero);
 void flush_in();
+long timeNow();
 
 #endif

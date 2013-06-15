@@ -36,13 +36,15 @@
  *  de erro.                                                *
  *  - Caso variavel peca->linha ou peca->coluna seja maior  *
  *  que o tabuleiro, imprime mensagem de erro.              */
-Peca *criaPeca(int linha, int coluna, char simbolo)
+Peca *criaPeca(int linha, int coluna, char simbolo, int pecaID)
 {
     Peca *peca = (Peca *)malloc(sizeof(Peca));
     peca->linha = linha;
     peca->coluna = coluna;
     peca->simbolo = simbolo;
-    if (peca->simbolo == 't' || peca->simbolo == 'T')
+    peca->pecaID = pecaID;
+    
+    if (toupper(peca->simbolo) == 'T')
     {
         strcpy(peca->nome, "Torre");
     }

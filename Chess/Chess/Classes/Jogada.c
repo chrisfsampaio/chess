@@ -18,16 +18,6 @@ Jogada  *criaJogada()
     return jogada;
 }
 
-void comecaTempo(Jogada *jogada)
-{
-    jogada->startTimestamp = time(NULL);
-}
-
-void finalizaTempo(Jogada *jogada)
-{
-    jogada->endTimestamp = time(NULL);
-}
-
 double tempoJogada(Jogada *jogada)
 {
     double tempo = (double)jogada->endTimestamp - jogada->startTimestamp;

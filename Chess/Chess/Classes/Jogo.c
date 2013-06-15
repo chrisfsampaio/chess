@@ -25,6 +25,8 @@
 #include <stdlib.h>
 #include "Jogo.h"
 #include "Utilities.h"
+#include <ctype.h>
+#include <unistd.h>
 
 #ifdef _WIN32
 #define CLEAR_WIN() system("cls");
@@ -50,38 +52,39 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
     strcpy(jogo->titulo, "+JOGO DE XADREZ+");
 
     jogo->lista = criaListaPeca();
-    addPecaLista(jogo->lista, criaPeca(0, 0, 'T'));
-    addPecaLista(jogo->lista, criaPeca(0, 1, 'H'));
-    addPecaLista(jogo->lista, criaPeca(0, 2, 'B'));
-    addPecaLista(jogo->lista, criaPeca(0, 3, 'Q'));
-    addPecaLista(jogo->lista, criaPeca(0, 4, 'K'));
-    addPecaLista(jogo->lista, criaPeca(0, 5, 'B'));
-    addPecaLista(jogo->lista, criaPeca(0, 6, 'H'));
-    addPecaLista(jogo->lista, criaPeca(0, 7, 'T'));
-    addPecaLista(jogo->lista, criaPeca(1, 0, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 1, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 2, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 3, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 4, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 5, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 6, 'P'));
-    addPecaLista(jogo->lista, criaPeca(1, 7, 'P'));
-    addPecaLista(jogo->lista, criaPeca(6, 0, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 1, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 2, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 3, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 4, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 5, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 6, 'p'));
-    addPecaLista(jogo->lista, criaPeca(6, 7, 'p'));
-    addPecaLista(jogo->lista, criaPeca(7, 0, 't'));
-    addPecaLista(jogo->lista, criaPeca(7, 1, 'h'));
-    addPecaLista(jogo->lista, criaPeca(7, 2, 'b'));
-    addPecaLista(jogo->lista, criaPeca(7, 3, 'q'));
-    addPecaLista(jogo->lista, criaPeca(7, 4, 'k'));
-    addPecaLista(jogo->lista, criaPeca(7, 5, 'b'));
-    addPecaLista(jogo->lista, criaPeca(7, 6, 'h'));
-    addPecaLista(jogo->lista, criaPeca(7, 7, 't'));
+    jogo->jogadas = criaPilhaJogada();
+    addPecaLista(jogo->lista, criaPeca(0, 0, 'T', 1));
+    addPecaLista(jogo->lista, criaPeca(0, 1, 'H', 2));
+    addPecaLista(jogo->lista, criaPeca(0, 2, 'B', 3));
+    addPecaLista(jogo->lista, criaPeca(0, 3, 'Q', 4));
+    addPecaLista(jogo->lista, criaPeca(0, 4, 'K', 5));
+    addPecaLista(jogo->lista, criaPeca(0, 5, 'B', 6));
+    addPecaLista(jogo->lista, criaPeca(0, 6, 'H', 7));
+    addPecaLista(jogo->lista, criaPeca(0, 7, 'T', 8));
+    addPecaLista(jogo->lista, criaPeca(1, 0, 'P', 9));
+    addPecaLista(jogo->lista, criaPeca(1, 1, 'P', 10));
+    addPecaLista(jogo->lista, criaPeca(1, 2, 'P', 11));
+    addPecaLista(jogo->lista, criaPeca(1, 3, 'P', 12));
+    addPecaLista(jogo->lista, criaPeca(1, 4, 'P', 13));
+    addPecaLista(jogo->lista, criaPeca(1, 5, 'P', 14));
+    addPecaLista(jogo->lista, criaPeca(1, 6, 'P', 15));
+    addPecaLista(jogo->lista, criaPeca(1, 7, 'P', 16));
+    addPecaLista(jogo->lista, criaPeca(6, 0, 'p', 17));
+    addPecaLista(jogo->lista, criaPeca(6, 1, 'p', 18));
+    addPecaLista(jogo->lista, criaPeca(6, 2, 'p', 19));
+    addPecaLista(jogo->lista, criaPeca(6, 3, 'p', 20));
+    addPecaLista(jogo->lista, criaPeca(6, 4, 'p', 21));
+    addPecaLista(jogo->lista, criaPeca(6, 5, 'p', 22));
+    addPecaLista(jogo->lista, criaPeca(6, 6, 'p', 23));
+    addPecaLista(jogo->lista, criaPeca(6, 7, 'p', 24));
+    addPecaLista(jogo->lista, criaPeca(7, 0, 't', 25));
+    addPecaLista(jogo->lista, criaPeca(7, 1, 'h', 26));
+    addPecaLista(jogo->lista, criaPeca(7, 2, 'b', 27));
+    addPecaLista(jogo->lista, criaPeca(7, 3, 'q', 28));
+    addPecaLista(jogo->lista, criaPeca(7, 4, 'k', 29));
+    addPecaLista(jogo->lista, criaPeca(7, 5, 'b', 30));
+    addPecaLista(jogo->lista, criaPeca(7, 6, 'h', 31));
+    addPecaLista(jogo->lista, criaPeca(7, 7, 't', 32));
 
     //insere os ponteiros de pecas na matrix que vai ser inserida no tabuleiro
     for (int i = 0; i < 32; i++)
@@ -102,7 +105,7 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
  *  tamente e nome dos dois jogares nos devidos times;     *
  *  - Chama funcao executaJogada,passando estrutura jogo   *
  *  por valor.                                             */
-void display(Jogo *jogo, char *msg)
+void display(Jogo *jogo, char *msg, int execJogada)
 {
     #ifdef _WIN32
     CLEAR_WIN();
@@ -178,8 +181,10 @@ void display(Jogo *jogo, char *msg)
     #elif __APPLE__
     printf("\n\t\t\t\t\t\t\t\t%s\n%s\n", jogo->jogador2, msg);
     #endif
-
-    executaJogada(jogo);
+    
+    if (execJogada) {
+        executaJogada(jogo);
+    }
 }
 
 /*         - Funcao executaJogada() -                       *
@@ -195,18 +200,20 @@ void display(Jogo *jogo, char *msg)
  *  se os movimentos sao validos e verifica Xeque Mate.     */
 void executaJogada(Jogo *jogo)
 {
+    long tempo = timeNow();
     char jogada[6];
     char msgJogador[100];
     do{
-    jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador2) : strcpy(msgJogador, jogo->jogador1);
-    jogo->turno == 'B' ? strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Brancas (minusculas)\n")   :
-    strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Pretas (maiusculas)\n");    
-    printf("%s",msgJogador);    
-    fgets(jogada, sizeof(jogada), stdin);
+        jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador2) : strcpy(msgJogador, jogo->jogador1);
+        jogo->turno == 'B' ? strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Brancas (minusculas)\n")   :
+        strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Pretas (maiusculas)\n");
+        printf("%s",msgJogador);
+        fgets(jogada, sizeof(jogada), stdin);
     } while (jogada[0] == '\n' || strlen(jogada) < 1);
-    flush_in();
     fflush(stdin);
-    
+    flush_in();
+
+
     int linhaOrigem = (7-(((int)jogada[0] - '0') - 1));
     int colunaOrigem = letraParaNumero(jogada[1]);
 
@@ -241,23 +248,49 @@ void executaJogada(Jogo *jogo)
                 }
                 else
                 {
-                    jogadaOk = 1;
-                    Peca *pecaCapturada = pecaRetorno;
-                    if (pecaCapturada != NULL)
+                    display(jogo, "Confirmar jogada? S = Sim, N = Nao\n", 0);
+                    char confirma = 'A';
+                    while (toupper(confirma) != 'N' && toupper(confirma) != 'S')
                     {
-                        strcat(msg, "A peca -");
-                        strcat(msg, pecaCapturada->nome);
-                        strcat(msg, "- de -");
-                        strcat(msg, jogo->turno == 'B' ? jogo->jogador1 : jogo->jogador2);
-                        strcat(msg, "- foi capturada!");
-                        if (pecaCapturada->simbolo == 'k' || pecaCapturada->simbolo == 'K')
+                        confirma = fgetc(stdin);
+                    }
+                    confirma = toupper(confirma);
+                    if (confirma == 'N')
+                    {
+                        jogadaOk = 0;
+                        setCasa(jogo->tabuleiro, linhaOrigem, colunaOrigem, peca);
+                        setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, pecaRetorno);
+                        strcat(msg, "");
+                    }
+                    else
+                    {
+                        jogadaOk = 1;
+                        Jogada *jogada = criaJogada();
+                        jogada->startTimestamp = tempo;
+                        jogada->endTimestamp = timeNow();
+                        jogada->pecaCapturada = pecaRetorno;
+                        jogada->pecaMovida = peca;
+                        jogada->origem = (Coordenada){linhaOrigem, colunaOrigem};
+                        jogada->destino = (Coordenada){linhaDestino, colunaDestino};
+                        addPilhaJogada(jogo->jogadas, jogada);
+                        Peca *pecaCapturada = pecaRetorno;
+                        if (pecaCapturada != NULL)
                         {
-                            strcat(msg, "\nO jogador -");
-                            strcat(msg, jogo->turno == 'B' ? jogo->jogador2 : jogo->jogador1);
-                            strcat(msg, "- venceu!!");
-                            fimDeJogo = 1;
+                            strcat(msg, "A peca -");
+                            strcat(msg, pecaCapturada->nome);
+                            strcat(msg, "- de -");
+                            strcat(msg, jogo->turno == 'B' ? jogo->jogador1 : jogo->jogador2);
+                            strcat(msg, "- foi capturada!");
+                            if (pecaCapturada->simbolo == 'k' || pecaCapturada->simbolo == 'K')
+                            {
+                                strcat(msg, "\nO jogador -");
+                                strcat(msg, jogo->turno == 'B' ? jogo->jogador2 : jogo->jogador1);
+                                strcat(msg, "- venceu!!");
+                                fimDeJogo = 1;
+                            }
                         }
                     }
+
                 }
             }
             else
@@ -286,7 +319,7 @@ void executaJogada(Jogo *jogo)
         printf("%s", msg);
         exit(0);
     }
-    display(jogo, msg);
+    display(jogo, msg, 1);
 }
 
 /*         - Funcao inverterTurno() -                       *

@@ -51,7 +51,7 @@ int main(int argc, const char * argv[])
         strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
     Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
-    display(novoJogo, "");
+    display(novoJogo, "", 1);
     
     #elif __APPLE__        
     do{
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[])
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
     
     Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
-    display(novoJogo, "");
+    display(novoJogo, "", 1);
     #endif
     return 0;
 
