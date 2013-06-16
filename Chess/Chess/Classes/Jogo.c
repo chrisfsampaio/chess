@@ -210,8 +210,11 @@ void executaJogada(Jogo *jogo)
         printf("%s",msgJogador);
         fgets(jogada, sizeof(jogada), stdin);
     } while (jogada[0] == '\n' || strlen(jogada) < 1);
+    #ifdef _WIN32
     fflush(stdin);
+    #elif __APPLE__
     flush_in();
+    #endif
 
 
     int linhaOrigem = (7-(((int)jogada[0] - '0') - 1));
@@ -248,22 +251,22 @@ void executaJogada(Jogo *jogo)
                 }
                 else
                 {
-                    display(jogo, "Confirmar jogada? S = Sim, N = Nao", 0);
+                    display(jogo, "Confirmar jogada (Nao)? S = Sim, N = Nao", 0);
                     char confirma = 'A';
-                    while (toupper(confirma) != 'N' && toupper(confirma) != 'S')
+                    while (toupper(confirma) != 'N' && toupper(confirma) != 'S' && confirma != '\n')
                     {
                         confirma = fgetc(stdin);
-                        getchar();
                     }
+                    flush_in();
                     confirma = toupper(confirma);
-                    if (confirma == 'N')
+                    if (confirma == 'N' || confirma == '\n')
                     {
                         jogadaOk = 0;
                         setCasa(jogo->tabuleiro, linhaOrigem, colunaOrigem, peca);
                         setCasa(jogo->tabuleiro, linhaDestino, colunaDestino, pecaRetorno);
                         strcat(msg, "");
                     }
-                    else
+                    else 
                     {
                         jogadaOk = 1;
                         Jogada *jogada = criaJogada();
