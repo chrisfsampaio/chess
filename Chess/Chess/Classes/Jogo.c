@@ -257,7 +257,11 @@ void executaJogada(Jogo *jogo)
                     {
                         confirma = fgetc(stdin);
                     }
+                    #ifdef _WIN32
+                    fflush(stdin);
+                    #elif __APPLE__
                     flush_in();
+                    #endif                    
                     confirma = toupper(confirma);
                     if (confirma == 'N' || confirma == '\n')
                     {
