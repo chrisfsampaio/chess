@@ -1,10 +1,16 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3∫ Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  Cássio Otávio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Natã Komirchuk de Jesus
+//
 //  ListaPeca.h
-//  Chess
-//
-//  Created by Christian on 6/4/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
-//
+
 
 #ifndef Chess_ListaPeca_h
 #define Chess_ListaPeca_h

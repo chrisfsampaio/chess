@@ -1,10 +1,15 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3∫ Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  Cássio Otávio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Natã Komirchuk de Jesus
+//
 //  Node.c
-//  Chess
-//
-//  Created by Christian on 6/5/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
-//
 
 #include <stdio.h>
 #include <stdlib.h>

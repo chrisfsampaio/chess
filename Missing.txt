@@ -1,7 +1,0 @@
-
-----InProgress----
-6. (IMPORTANTE) Código com alguns vícios ruins. 
-	a. Comparações duplicadas do símbolo da peça (para maiúscula e
-minúscula). Isso pode ser resolvido convertendo sempre o símbolo para maiúscula (ou minúscula), antes de realizar a
-verificação do tipo da peça (caso em que o lado não importa). 
-------------------

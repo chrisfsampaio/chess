@@ -1,10 +1,15 @@
 //
+// Projeto: Jogo de Xadrez
+// Disciplina: Estrutura de Dados 3∫ Semestre
+// Grupo: VoIP
+// Integrantes:
+//   -  Abner Silva Zanetti
+//   -  Cássio Otávio Ferreira Perbelini Castilho
+//   -  Jaqueline Campaci Silva
+//   -  Leonardo Henrique Tsuda
+//   -  Murilo Natã Komirchuk de Jesus
+//
 //  Lista.c
-//  Chess
-//
-//  Created by Christian on 6/5/13.
-//  Copyright (c) 2013 Leonardo Henrique Tsuda. All rights reserved.
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,15 +36,15 @@ ListaPeca *criaListaPeca()
  * Retorno: int status - codigo da operacao efetuada            */
 int addPecaLista(ListaPeca *lista, Peca *peca)
 {
-    
+
     int status = 1;
-    
+
     // Verifica se a lista de pecas foi criada
     if(lista != NULL && peca != NULL)
     {
         // Aloca memoria para nova peca
         Node *novoNoPeca = criaNode(peca, NULL);
-        
+
         // Verifica se a lista esta vazia
         if (lista->inicio == NULL)
         {
@@ -55,7 +60,7 @@ int addPecaLista(ListaPeca *lista, Peca *peca)
     {
         status = -1;
     }
-    
+
     return status;
 }
 
@@ -64,12 +69,12 @@ Peca *pecaAtIndex(ListaPeca *lista, int index)
 {
     int i = 0;
     Node *node = lista->inicio;
-    
+
     while (i < index)
     {
         node = node->next;
         i++;
     }
-    
+
     return node->peca;
 }
