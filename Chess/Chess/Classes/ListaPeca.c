@@ -78,3 +78,83 @@ Peca *pecaAtIndex(ListaPeca *lista, int index)
 
     return node->peca;
 }
+
+ListaPeca *carregaListaDoArquivo()
+{
+    ListaPeca *lista = criaListaPeca();
+    
+    FILE *fr;
+    int ch = 0;
+    int i =0;
+    
+    if((fr = fopen("./save.xdz", "rb")) != NULL)
+    {
+        while((ch = getc(fr)) && (!feof(fr)) && ungetc(ch, fr))
+        {
+            Peca *peca = (Peca *)malloc(sizeof(Peca));
+            i = 0;
+            ch = getc(fr);
+            while(ch != '\0')
+            {
+                peca->nome[i++] = ch;
+                ch = getc(fr);
+            }
+            
+            peca->simbolo = getc(fr);
+            
+            fread(&peca->linha, sizeof(int), 1, fr);
+            fread(&peca->coluna, sizeof(int), 1, fr);
+            fread(&peca->capturada, sizeof(int), 1, fr);
+            fread(&peca->pecaID, sizeof(int), 1, fr);
+            
+            addPecaLista(lista, peca);
+        }
+        fclose(fr);
+    }
+    
+    return lista;
+}
+
+int saveListToFile(ListaPeca *lista)
+{
+    imprimirLista(lista);
+    Node *first = lista->inicio;
+    Node *node = NULL;
+    
+    FILE *file = fopen("./save.xdz", "wb");
+    fclose(file);
+    
+    node = first;
+    Peca *peca = first->peca;
+    while (peca != NULL)
+    {
+        writePecaToFile(peca);
+        node = node->next;
+        peca = node != NULL ? node->peca : NULL;
+    }
+    
+    return 0;
+}
+
+void destruirLista(ListaPeca *lista)
+{
+    Node *node = lista->inicio;
+    while (node != NULL)
+    {
+        Node *freeNode = node;
+        free(freeNode->peca);
+        free(freeNode);
+        node = node->next;
+    }
+}
+
+void imprimirLista(ListaPeca *lista)
+{
+    Node *node = lista->inicio;
+    while (node != NULL)
+    {
+        Peca *peca = node->peca;
+        printf("Peca %c em linha: %d  coluna: %d\n",peca->simbolo, peca->linha, peca->coluna);
+        node = node->next;
+    }
+}

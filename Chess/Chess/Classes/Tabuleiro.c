@@ -44,7 +44,7 @@ Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
     for (int i = 0; i < numeroDePecas; i++)
     {
         Peca *peca = &pecas[i];
-        tabuleiro->pecas[peca->linha][peca->coluna] = peca;
+        tabuleiro->pecas[peca->linha][peca->coluna] = &pecas[i];
     }
 
     return tabuleiro;
@@ -78,8 +78,8 @@ Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
     }
     tabuleiro->pecas[peca->linha][peca->coluna] = NULL;
     tabuleiro->pecas[linha][coluna] = peca;
-    tabuleiro->pecas[linha][coluna]->linha = linha;
-    tabuleiro->pecas[linha][coluna]->coluna = coluna;
+    peca->linha = linha;
+    peca->coluna = coluna;
 
     Peca *pecaRetorno = pecaDestino;
     return pecaRetorno;

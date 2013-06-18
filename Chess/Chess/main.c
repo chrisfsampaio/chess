@@ -32,7 +32,7 @@
  * jogo do tamanho 150x50 e inicia o jogo. Se verificado  *
  * sistema Apple, inicia o jogo.                          */
 int main(int argc, const char * argv[])
-{
+{    
     char jogador1[kComprimentoNome];
     char jogador2[kComprimentoNome];
     Peca _pieces[32];
@@ -50,7 +50,7 @@ int main(int argc, const char * argv[])
         fgets(jogador2, sizeof(jogador2), stdin);
         strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, 1);
     display(novoJogo, "", 1);
 
     #elif __APPLE__
@@ -66,7 +66,7 @@ int main(int argc, const char * argv[])
     strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
 
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, 1);
     display(novoJogo, "", 1);
     #endif
     return 0;

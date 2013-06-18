@@ -42,7 +42,7 @@
  *  - Cria todas as pecas e armazena no vetor pecas[32];    *
  *  - Cria tabuleiro e coloca as pecas nos lugares;         *
  *  - Inicia o turno das pecas Brancas (Regra do Xadrez).   */
-Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
+Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces, int carregaDoArquivo)
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
     
@@ -51,40 +51,48 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces)
 
     strcpy(jogo->titulo, "+JOGO DE XADREZ+");
 
-    jogo->lista = criaListaPeca();
     jogo->jogadas = criaPilhaJogada();
-    addPecaLista(jogo->lista, criaPeca(0, 0, 'T', 1));
-    addPecaLista(jogo->lista, criaPeca(0, 1, 'H', 2));
-    addPecaLista(jogo->lista, criaPeca(0, 2, 'B', 3));
-    addPecaLista(jogo->lista, criaPeca(0, 3, 'Q', 4));
-    addPecaLista(jogo->lista, criaPeca(0, 4, 'K', 5));
-    addPecaLista(jogo->lista, criaPeca(0, 5, 'B', 6));
-    addPecaLista(jogo->lista, criaPeca(0, 6, 'H', 7));
-    addPecaLista(jogo->lista, criaPeca(0, 7, 'T', 8));
-    addPecaLista(jogo->lista, criaPeca(1, 0, 'P', 9));
-    addPecaLista(jogo->lista, criaPeca(1, 1, 'P', 10));
-    addPecaLista(jogo->lista, criaPeca(1, 2, 'P', 11));
-    addPecaLista(jogo->lista, criaPeca(1, 3, 'P', 12));
-    addPecaLista(jogo->lista, criaPeca(1, 4, 'P', 13));
-    addPecaLista(jogo->lista, criaPeca(1, 5, 'P', 14));
-    addPecaLista(jogo->lista, criaPeca(1, 6, 'P', 15));
-    addPecaLista(jogo->lista, criaPeca(1, 7, 'P', 16));
-    addPecaLista(jogo->lista, criaPeca(6, 0, 'p', 17));
-    addPecaLista(jogo->lista, criaPeca(6, 1, 'p', 18));
-    addPecaLista(jogo->lista, criaPeca(6, 2, 'p', 19));
-    addPecaLista(jogo->lista, criaPeca(6, 3, 'p', 20));
-    addPecaLista(jogo->lista, criaPeca(6, 4, 'p', 21));
-    addPecaLista(jogo->lista, criaPeca(6, 5, 'p', 22));
-    addPecaLista(jogo->lista, criaPeca(6, 6, 'p', 23));
-    addPecaLista(jogo->lista, criaPeca(6, 7, 'p', 24));
-    addPecaLista(jogo->lista, criaPeca(7, 0, 't', 25));
-    addPecaLista(jogo->lista, criaPeca(7, 1, 'h', 26));
-    addPecaLista(jogo->lista, criaPeca(7, 2, 'b', 27));
-    addPecaLista(jogo->lista, criaPeca(7, 3, 'q', 28));
-    addPecaLista(jogo->lista, criaPeca(7, 4, 'k', 29));
-    addPecaLista(jogo->lista, criaPeca(7, 5, 'b', 30));
-    addPecaLista(jogo->lista, criaPeca(7, 6, 'h', 31));
-    addPecaLista(jogo->lista, criaPeca(7, 7, 't', 32));
+    if (carregaDoArquivo == 1)
+    {
+        jogo->lista = carregaListaDoArquivo();
+        imprimirLista(jogo->lista);
+    }
+    else
+    {
+        jogo->lista = criaListaPeca();
+        addPecaLista(jogo->lista, criaPeca(0, 0, 'T', 1));
+        addPecaLista(jogo->lista, criaPeca(0, 1, 'H', 2));
+        addPecaLista(jogo->lista, criaPeca(0, 2, 'B', 3));
+        addPecaLista(jogo->lista, criaPeca(0, 3, 'Q', 4));
+        addPecaLista(jogo->lista, criaPeca(0, 4, 'K', 5));
+        addPecaLista(jogo->lista, criaPeca(0, 5, 'B', 6));
+        addPecaLista(jogo->lista, criaPeca(0, 6, 'H', 7));
+        addPecaLista(jogo->lista, criaPeca(0, 7, 'T', 8));
+        addPecaLista(jogo->lista, criaPeca(1, 0, 'P', 9));
+        addPecaLista(jogo->lista, criaPeca(1, 1, 'P', 10));
+        addPecaLista(jogo->lista, criaPeca(1, 2, 'P', 11));
+        addPecaLista(jogo->lista, criaPeca(1, 3, 'P', 12));
+        addPecaLista(jogo->lista, criaPeca(1, 4, 'P', 13));
+        addPecaLista(jogo->lista, criaPeca(1, 5, 'P', 14));
+        addPecaLista(jogo->lista, criaPeca(1, 6, 'P', 15));
+        addPecaLista(jogo->lista, criaPeca(1, 7, 'P', 16));
+        addPecaLista(jogo->lista, criaPeca(6, 0, 'p', 17));
+        addPecaLista(jogo->lista, criaPeca(6, 1, 'p', 18));
+        addPecaLista(jogo->lista, criaPeca(6, 2, 'p', 19));
+        addPecaLista(jogo->lista, criaPeca(6, 3, 'p', 20));
+        addPecaLista(jogo->lista, criaPeca(6, 4, 'p', 21));
+        addPecaLista(jogo->lista, criaPeca(6, 5, 'p', 22));
+        addPecaLista(jogo->lista, criaPeca(6, 6, 'p', 23));
+        addPecaLista(jogo->lista, criaPeca(6, 7, 'p', 24));
+        addPecaLista(jogo->lista, criaPeca(7, 0, 't', 25));
+        addPecaLista(jogo->lista, criaPeca(7, 1, 'h', 26));
+        addPecaLista(jogo->lista, criaPeca(7, 2, 'b', 27));
+        addPecaLista(jogo->lista, criaPeca(7, 3, 'q', 28));
+        addPecaLista(jogo->lista, criaPeca(7, 4, 'k', 29));
+        addPecaLista(jogo->lista, criaPeca(7, 5, 'b', 30));
+        addPecaLista(jogo->lista, criaPeca(7, 6, 'h', 31));
+        addPecaLista(jogo->lista, criaPeca(7, 7, 't', 32));
+    }
 
     //insere os ponteiros de pecas na matrix que vai ser inserida no tabuleiro
     for (int i = 0; i < 32; i++)
@@ -321,6 +329,7 @@ void executaJogada(Jogo *jogo)
     if (jogadaOk)
     {
         inverterTurno(jogo);
+        saveListToFile(jogo->lista);
     }
     if (fimDeJogo)
     {

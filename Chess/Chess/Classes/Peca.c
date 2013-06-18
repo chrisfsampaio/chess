@@ -242,7 +242,34 @@ int movePeca(Peca *peca, int linha, int coluna, int captura)
     return -1;
 }
 
+void writePecaToFile(Peca *peca)
+{
+    FILE *file = NULL;
+    if((file=fopen("./save.xdz", "ab+")) == NULL)
+    {
+        printf("Erro ao abrir o arquivo");
+        return;
+    }
+    else
+    {
+        fwrite(peca->nome, sizeof(char), strlen(peca->nome), file);
+        fputc('\0', file);
+        fputc(peca->simbolo, file);
+        fwrite(&peca->linha, sizeof(int), 1, file);
+        fwrite(&peca->coluna, sizeof(int), 1, file);
+        fwrite(&peca->capturada, sizeof(int), 1, file);
+        fwrite(&peca->pecaID, sizeof(int), 1, file);
+    }
+    fclose(file);
+}
 
+
+//char nome[15];
+//char simbolo;
+//int linha;
+//int coluna;
+//int capturada; // 0=Nao 1=Sim
+//int pecaID;
 
 
 /*

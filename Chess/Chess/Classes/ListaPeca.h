@@ -27,5 +27,9 @@ typedef struct _listaPeca ListaPeca;
 ListaPeca* criaListaPeca();
 int addPecaLista(ListaPeca *lista, Peca *peca);
 Peca *pecaAtIndex(ListaPeca *lista, int index);
+int saveListToFile(ListaPeca *lista);
+ListaPeca *carregaListaDoArquivo();
+void destruirLista(ListaPeca *lista);
+void imprimirLista(ListaPeca *lista);
 
 #endif

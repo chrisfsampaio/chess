@@ -44,5 +44,6 @@ int movePeca(Peca *peca, int linha, int coluna, int captura);
 /*  Retorna um char que indica o lado da peca     *
  *  P' para pretas, e 'B' para brancas            */
 char lado(Peca *peca);
+void writePecaToFile(Peca *peca);
 
 #endif
