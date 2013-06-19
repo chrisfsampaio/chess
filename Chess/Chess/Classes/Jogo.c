@@ -46,8 +46,36 @@ Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo)
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
     
-    strcpy(jogo->jogador1, jog1);
-    strcpy(jogo->jogador2, jog2);    
+    if (carregaDoArquivo == 1)
+    {
+        FILE *fr = fopen("./save.xdz", "rb");
+        int ch = 0;
+        int i = 0;
+        char jogador1[100];
+        char jogador2[100];
+        
+        ch = getc(fr);
+        while(ch != '\0')
+        {
+            jogador1[i++] = ch;
+            ch = getc(fr);
+        }
+        ch = fgetc(fr);
+        i = 0;
+        while(ch != '\0')
+        {
+            jogador2[i++] = ch;
+            ch = getc(fr);
+        }
+        fclose(fr);
+        strcpy(jogo->jogador1, jogador1);
+        strcpy(jogo->jogador2, jogador2);
+    }
+    else
+    {
+        strcpy(jogo->jogador1, jog1);
+        strcpy(jogo->jogador2, jog2);
+    }
 
     strcpy(jogo->titulo, "+JOGO DE XADREZ+");
 
@@ -331,7 +359,7 @@ void executaJogada(Jogo *jogo)
     if (jogadaOk)
     {
         inverterTurno(jogo);
-        saveListToFile(jogo->lista);
+        salvarJogo(jogo);
     }
     if (fimDeJogo)
     {
@@ -349,5 +377,19 @@ void inverterTurno(Jogo *jogo)
         jogo->turno = 'P';
     else
         jogo->turno = 'B';
+}
+
+
+void salvarJogo(Jogo *jogo)
+{
+    FILE *file = fopen("./save.xdz", "wb");
+    fwrite(jogo->jogador1, sizeof(char), strlen(jogo->jogador1), file);
+    fputc('\0', file);
+    fwrite(jogo->jogador2, sizeof(char), strlen(jogo->jogador2), file);
+    fputc('\0', file);
+    fclose(file);
+    
+    
+    saveListToFile(jogo->lista);
 }
 

@@ -57,6 +57,7 @@ Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo);
 void display(Jogo *jogo, char *msg, int execJogada);
 void executaJogada(Jogo *jogo);
 void inverterTurno(Jogo *jogo);
+void salvarJogo(Jogo *jogo);
 
 
 #endif

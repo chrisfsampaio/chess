@@ -91,6 +91,19 @@ ListaPeca *carregaListaDoArquivo()
     
     if((fr = fopen("./save.xdz", "rb")) != NULL)
     {
+        for (int j = 0; j < 2; j++)
+        {
+            ch = getc(fr);
+            char test[100];
+            int h =0;
+            while(ch != '\0')
+            {
+                test[h++] = ch;
+                ch = getc(fr);
+                printf("%s",test);
+            }
+        }
+        
         while((ch = getc(fr)) && (!feof(fr)) && ungetc(ch, fr))
         {
             Peca *peca = (Peca *)malloc(sizeof(Peca));
@@ -122,9 +135,6 @@ int saveListToFile(ListaPeca *lista)
     imprimirLista(lista);
     Node *first = lista->inicio;
     Node *node = NULL;
-    
-    FILE *file = fopen("./save.xdz", "wb");
-    fclose(file);
     
     node = first;
     Peca *peca = first->peca;
