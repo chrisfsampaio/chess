@@ -51,8 +51,8 @@ Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo)
         FILE *fr = fopen("./save.xdz", "rb");
         int ch = 0;
         int i = 0;
-        char jogador1[100];
-        char jogador2[100];
+        char jogador1[kComprimentoNome];
+        char jogador2[kComprimentoNome];
         
         ch = getc(fr);
         while(ch != '\0')
