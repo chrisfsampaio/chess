@@ -67,6 +67,11 @@ int addPecaLista(ListaPeca *lista, Peca *peca)
 
 Peca *pecaAtIndex(ListaPeca *lista, int index)
 {
+    if (lista == NULL)
+    {
+        return NULL;
+    }
+    
     int i = 0;
     Node *node = lista->inicio;
 
@@ -132,6 +137,11 @@ ListaPeca *carregaListaDoArquivo()
 
 int saveListToFile(ListaPeca *lista)
 {
+    if (lista == NULL || lista->inicio == NULL)
+    {
+        return NULL;
+    }
+    
     Node *first = lista->inicio;
     Node *node = NULL;
     
@@ -149,6 +159,11 @@ int saveListToFile(ListaPeca *lista)
 
 void destruirLista(ListaPeca *lista)
 {
+    if (lista == NULL || lista->inicio == NULL)
+    {
+        return;
+    }
+    
     Node *node = lista->inicio;
     while (node != NULL)
     {
@@ -161,6 +176,11 @@ void destruirLista(ListaPeca *lista)
 
 void imprimirLista(ListaPeca *lista)
 {
+    if (lista == NULL || lista->inicio == NULL)
+    {
+        return;
+    }
+    
     Node *node = lista->inicio;
     while (node != NULL)
     {
