@@ -31,7 +31,7 @@
  *  - Preenche o lado de cada time com suas respectivas     *
  *  pecas;                                                  *
  *  - Retorna tabuleiro completo.                           */
-Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
+Tabuleiro *criaTabuleiro(Peca *pecas[], int numeroDePecas)
 {
     Tabuleiro *tabuleiro = (Tabuleiro *)malloc(sizeof(Tabuleiro));
     for (int i = 0; i < 8; i++)
@@ -43,8 +43,8 @@ Tabuleiro *criaTabuleiro(Peca *pecas, int numeroDePecas)
     }
     for (int i = 0; i < numeroDePecas; i++)
     {
-        Peca *peca = &pecas[i];
-        tabuleiro->pecas[peca->linha][peca->coluna] = &pecas[i];
+        Peca *peca = pecas[i];
+        tabuleiro->pecas[peca->linha][peca->coluna] = pecas[i];
     }
 
     return tabuleiro;
@@ -81,6 +81,8 @@ Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
     peca->linha = linha;
     peca->coluna = coluna;
 
+    printf("peca modificada %p", peca);
+    
     Peca *pecaRetorno = pecaDestino;
     return pecaRetorno;
 }

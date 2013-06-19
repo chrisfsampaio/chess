@@ -75,8 +75,10 @@ Peca *pecaAtIndex(ListaPeca *lista, int index)
         node = node->next;
         i++;
     }
+    
+    Peca *peca = node->peca;
 
-    return node->peca;
+    return peca;
 }
 
 ListaPeca *carregaListaDoArquivo()
@@ -154,7 +156,7 @@ void imprimirLista(ListaPeca *lista)
     while (node != NULL)
     {
         Peca *peca = node->peca;
-        printf("Peca %c em linha: %d  coluna: %d\n",peca->simbolo, peca->linha, peca->coluna);
+        printf("Peca %c em linha: %d  coluna: %d endereco: %p\n",peca->simbolo, peca->linha, peca->coluna, peca);
         node = node->next;
     }
 }

@@ -42,7 +42,7 @@
  *  - Cria todas as pecas e armazena no vetor pecas[32];    *
  *  - Cria tabuleiro e coloca as pecas nos lugares;         *
  *  - Inicia o turno das pecas Brancas (Regra do Xadrez).   */
-Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces, int carregaDoArquivo)
+Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo)
 {
     Jogo *jogo  = (Jogo *)malloc(sizeof(Jogo));
     
@@ -55,7 +55,6 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces, int carregaDoArquivo)
     if (carregaDoArquivo == 1)
     {
         jogo->lista = carregaListaDoArquivo();
-        imprimirLista(jogo->lista);
     }
     else
     {
@@ -95,9 +94,11 @@ Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces, int carregaDoArquivo)
     }
 
     //insere os ponteiros de pecas na matrix que vai ser inserida no tabuleiro
+    
+    Peca *pieces[32];
     for (int i = 0; i < 32; i++)
     {
-        pieces[i] = *pecaAtIndex(jogo->lista, 31 - i);
+        pieces[i] = pecaAtIndex(jogo->lista, 31 - i);
     }
 
     Tabuleiro *tabuleiro = criaTabuleiro(pieces, 32);
@@ -290,6 +291,7 @@ void executaJogada(Jogo *jogo)
                         jogada->destino = (Coordenada){linhaDestino, colunaDestino};
                         addPilhaJogada(jogo->jogadas, jogada);
                         Peca *pecaCapturada = pecaRetorno;
+                        
                         if (pecaCapturada != NULL)
                         {
                             strcat(msg, "A peca -");

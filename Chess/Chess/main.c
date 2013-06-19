@@ -36,7 +36,6 @@ int main(int argc, const char * argv[])
     char jogador1[kComprimentoNome];
     char jogador2[kComprimentoNome];
     int load = 10;
-    Peca _pieces[32];
 
     #ifdef _WIN32
     system("mode 150, 50");
@@ -47,7 +46,7 @@ int main(int argc, const char * argv[])
     } while (load != 1 && (load != 0));
     
     if (load == 1) {
-        Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
         display(novoJogo, "", 1);
     }
     else if (load == 0)
@@ -65,7 +64,7 @@ int main(int argc, const char * argv[])
         fgets(jogador2, sizeof(jogador2), stdin);
         strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
     display(novoJogo, "", 1);
     }
 
@@ -77,7 +76,7 @@ int main(int argc, const char * argv[])
     } while (load != 1 && (load != 0));
 
     if (load == 1) {
-        Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
         display(novoJogo, "", 1);
     }
     else if (load == 0)
@@ -97,7 +96,7 @@ int main(int argc, const char * argv[])
     strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
 
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
     display(novoJogo, "", 1);
     }
     #endif

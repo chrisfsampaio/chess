@@ -53,7 +53,7 @@ typedef struct _jogo Jogo;
 
 
 /*          - Declarando os Headers da funcoes da TAD Jogo  */
-Jogo *criaJogo(char *jog1, char *jog2, Peca *pieces, int carregaDoArquivo);
+Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo);
 void display(Jogo *jogo, char *msg, int execJogada);
 void executaJogada(Jogo *jogo);
 void inverterTurno(Jogo *jogo);

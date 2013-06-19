@@ -36,7 +36,7 @@ struct _tabuleiro
 typedef struct _tabuleiro Tabuleiro;
 
 /*         - Declarando os Headers da funcoes da TAD Tabuleiro  */
-Tabuleiro *criaTabuleiro(Peca pecas[], int numeroDePecas);
+Tabuleiro *criaTabuleiro(Peca *pecas[], int numeroDePecas);
 Peca *getCasa(Tabuleiro *tabuleiro, int linha, int coluna);
 Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca);
 int existePecaNoCaminho(Tabuleiro *tabuleiro, Peca *peca, int linha, int coluna);
