@@ -35,11 +35,26 @@ int main(int argc, const char * argv[])
 {    
     char jogador1[kComprimentoNome];
     char jogador2[kComprimentoNome];
+    int load = 10;
     Peca _pieces[32];
 
     #ifdef _WIN32
     system("mode 150, 50");
-    do{
+    do
+    {
+        printf("Deseja carregar um jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
+        scanf("%d", &load);
+    } while (load != 1 && (load != 0));
+    
+    if (load == 1) {
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+        display(novoJogo, "", 1);
+    }
+    else if (load == 0)
+    {
+    fflush(stdin);
+    do
+    {
         printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter:\n");
         fgets(jogador1, sizeof(jogador1), stdin);
         strtok(jogador1, "\n");
@@ -50,24 +65,41 @@ int main(int argc, const char * argv[])
         fgets(jogador2, sizeof(jogador2), stdin);
         strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, 1);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
     display(novoJogo, "", 1);
+    }
 
-    #elif __APPLE__
-    do{
+    #elif __APPLE__    
+    do
+    {
+        printf("Deseja carregar um jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
+        scanf("%d", &load);
+    } while (load != 1 && (load != 0));
+
+    if (load == 1) {
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
+        display(novoJogo, "", 1);
+    }
+    else if (load == 0)
+    {
+    flush_in();
+    do
+    {
     printf("Digite o nome do Jogador 1\n#ATENCAO# Deve conter pelo menos um caracter:\n");
     fgets(jogador1, sizeof(jogador1), stdin);
     strtok(jogador1, "\n");
     } while (jogador1[0] == '\n' || strlen(jogador1) < 1);
 
-    do{
+    do
+    {
     printf("Digite o nome do Jogador 2\n#ATENCAO# Deve conter pelo menos um caracter:\n");
     fgets(jogador2, sizeof(jogador2), stdin);
     strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
 
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, 1);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, _pieces, load);
     display(novoJogo, "", 1);
+    }
     #endif
     return 0;
 
