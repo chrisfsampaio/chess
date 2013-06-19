@@ -58,6 +58,7 @@ void display(Jogo *jogo, char *msg, int execJogada);
 void executaJogada(Jogo *jogo);
 void inverterTurno(Jogo *jogo);
 void salvarJogo(Jogo *jogo);
+void imprimirStats(Jogo *jogo);
 
 
 #endif

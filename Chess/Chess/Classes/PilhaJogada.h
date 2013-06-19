@@ -25,5 +25,10 @@ typedef struct _pilhaJogada PilhaJogada;
 
 PilhaJogada *criaPilhaJogada();
 int addPilhaJogada(PilhaJogada *pilha, Jogada *jogada);
+int numJogadasPretas(PilhaJogada *pilha);
+int numJogadasBrancas(PilhaJogada *pilha);
+Jogada *jogadaMaisRapida(PilhaJogada *pilha);
+Jogada *jogadaMaisDemorada(PilhaJogada *pilha);
+void imprimirPilhaJogada(PilhaJogada *pilha);
 
 #endif

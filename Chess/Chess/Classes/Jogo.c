@@ -246,6 +246,10 @@ void executaJogada(Jogo *jogo)
         strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Pretas (maiusculas)\n");
         printf("%s",msgJogador);
         fgets(jogada, sizeof(jogada), stdin);
+        if (strcmp(jogada, "stats") == 0)
+        {
+            imprimirStats(jogo);
+        }
     } while (jogada[0] == '\n' || strlen(jogada) < 1);
     #ifdef _WIN32
     fflush(stdin);
@@ -360,6 +364,7 @@ void executaJogada(Jogo *jogo)
     {
         inverterTurno(jogo);
         salvarJogo(jogo);
+        imprimirPilhaJogada(jogo->jogadas);
     }
     if (fimDeJogo)
     {
@@ -391,5 +396,15 @@ void salvarJogo(Jogo *jogo)
     
     
     saveListToFile(jogo->lista);
+}
+
+void imprimirStats(Jogo *jogo)
+{
+    printf("\n\nJogadas Pretas: %d.\n", numJogadasPretas(jogo->jogadas));
+    printf("Jogadas Brancas: %d.\n", numJogadasBrancas(jogo->jogadas));
+    printf("\nA jogada mais rapida durou %f segundos.\n", tempoJogada(jogadaMaisRapida(jogo->jogadas)));
+    printf("A jogada mais demorada durou %f segundos.\n", tempoJogada(jogadaMaisDemorada(jogo->jogadas)));
+    printf("\nPressione enter para continuar o jogo...");
+    getc(stdin);
 }
 
