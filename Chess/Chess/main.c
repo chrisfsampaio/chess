@@ -46,6 +46,7 @@ int main(int argc, const char * argv[])
     } while (load != 1 && (load != 0));
     
     if (load == 1) {
+        fflush(stdin);
         Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
         display(novoJogo, "", 1);
     }
@@ -71,11 +72,12 @@ int main(int argc, const char * argv[])
     #elif __APPLE__    
     do
     {
-        printf("Deseja carregar um jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
+        printf("Deseja carregar o ultimo jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
         scanf("%d", &load);
     } while (load != 1 && (load != 0));
 
     if (load == 1) {
+        flush_in();
         Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
         display(novoJogo, "", 1);
     }

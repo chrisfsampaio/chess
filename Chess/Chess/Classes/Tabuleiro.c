@@ -80,8 +80,6 @@ Peca *setCasa(Tabuleiro *tabuleiro, int linha, int coluna, Peca *peca)
     tabuleiro->pecas[linha][coluna] = peca;
     peca->linha = linha;
     peca->coluna = coluna;
-
-    printf("peca modificada %p", peca);
     
     Peca *pecaRetorno = pecaDestino;
     return pecaRetorno;

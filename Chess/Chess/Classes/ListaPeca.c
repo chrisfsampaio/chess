@@ -132,7 +132,6 @@ ListaPeca *carregaListaDoArquivo()
 
 int saveListToFile(ListaPeca *lista)
 {
-    imprimirLista(lista);
     Node *first = lista->inicio;
     Node *node = NULL;
     
