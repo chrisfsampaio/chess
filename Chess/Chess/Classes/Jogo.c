@@ -249,6 +249,7 @@ void executaJogada(Jogo *jogo)
         if (strcmp(jogada, "stats") == 0)
         {
             imprimirStats(jogo);
+            jogada[0] = '\n';
         }
     } while (jogada[0] == '\n' || strlen(jogada) < 1);
     #ifdef _WIN32
