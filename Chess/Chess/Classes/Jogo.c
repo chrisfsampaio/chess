@@ -51,8 +51,8 @@ Jogo *criaJogo(char *jog1, char *jog2, int carregaDoArquivo)
         FILE *fr = fopen("./save.xdz", "rb");
         int ch = 0;
         int i = 0;
-        char jogador1[kComprimentoNome];
-        char jogador2[kComprimentoNome];
+        char jogador1[kComprimentoNome] = "";
+        char jogador2[kComprimentoNome] = "";
         
         ch = getc(fr);
         while(ch != '\0')
@@ -238,8 +238,8 @@ void display(Jogo *jogo, char *msg, int execJogada)
 void executaJogada(Jogo *jogo)
 {
     long tempo = timeNow();
-    char jogada[6];
-    char msgJogador[100];
+    char jogada[6]= "";
+    char msgJogador[250] = "";
     do{
         jogo->turno == 'B' ? strcpy(msgJogador, jogo->jogador2) : strcpy(msgJogador, jogo->jogador1);
         jogo->turno == 'B' ? strcat(msgJogador, ", digite a sua jogada (ex: 2a 3b) - Brancas (minusculas)\n")   :

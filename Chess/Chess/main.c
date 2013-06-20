@@ -43,11 +43,16 @@ int main(int argc, const char * argv[])
     {
         printf("Deseja carregar um jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
         load = getc(stdin);//("%d", &load);
+        FILE *fr = fopen("./save.xdz", "rb");
+        if (fr == NULL)
+        {
+            load = '0';
+        }
     } while (load != '1' && (load != '0'));
     
     if (load == '1') {
         fflush(stdin);
-        Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, 1);
         display(novoJogo, "", 1);
     }
     else if (load == '0')
@@ -65,7 +70,7 @@ int main(int argc, const char * argv[])
         fgets(jogador2, sizeof(jogador2), stdin);
         strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, 0);
     display(novoJogo, "", 1);
     }
 
@@ -73,12 +78,17 @@ int main(int argc, const char * argv[])
     do
     {
         printf("Deseja carregar o ultimo jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
-        load = getc(stdin);//("%d", &load);
+        load = getc(stdin);
+        FILE *fr = fopen("./save.xdz", "rb");
+        if (fr == NULL)
+        {
+            load = '0';
+        }
     } while (load != '1' && (load != '0'));
 
     if (load == '1') {
         flush_in();
-        Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
+        Jogo *novoJogo = criaJogo(jogador1, jogador2, 1);
         display(novoJogo, "", 1);
     }
     else if (load == '0')
@@ -98,7 +108,7 @@ int main(int argc, const char * argv[])
     strtok(jogador2, "\n");
     } while (jogador2[0] == '\n' || strlen(jogador2) < 1);
 
-    Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
+    Jogo *novoJogo = criaJogo(jogador1, jogador2, 0);
     display(novoJogo, "", 1);
     }
     #endif
