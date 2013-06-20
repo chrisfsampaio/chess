@@ -405,7 +405,7 @@ void imprimirStats(Jogo *jogo)
     printf("Jogadas Brancas: %d.\n", numJogadasBrancas(jogo->jogadas));
     printf("\nA jogada mais rapida durou %f segundos.\n", tempoJogada(jogadaMaisRapida(jogo->jogadas)));
     printf("A jogada mais demorada durou %f segundos.\n", tempoJogada(jogadaMaisDemorada(jogo->jogadas)));
-    printf("\nPressione enter para continuar o jogo...");
+    printf("\n");
     getc(stdin);
 }
 
