@@ -42,15 +42,15 @@ int main(int argc, const char * argv[])
     do
     {
         printf("Deseja carregar um jogo salvo ou iniciar um novo Jogo? 1 - Salvo, 0 - Novo Jogo\n");
-        scanf("%d", &load);
-    } while (load != 1 && (load != 0));
+        load = getc(stdin);//("%d", &load);
+    } while (load != '1' && (load != '0'));
     
-    if (load == 1) {
+    if (load == '1') {
         fflush(stdin);
         Jogo *novoJogo = criaJogo(jogador1, jogador2, load);
         display(novoJogo, "", 1);
     }
-    else if (load == 0)
+    else if (load == '0')
     {
     fflush(stdin);
     do
